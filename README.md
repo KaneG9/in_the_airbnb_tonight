@@ -76,11 +76,22 @@ I can continue to advertise my property as available until booking is confirmed
 
 ### Domain Model
 
+<details>
+<summary>Create an account user stories </summary>
+<br>
 <img src="/public/images/makersBnB_create_account.png">
-Create an account user stories 
+</details>
 
+<details>
+<summary>Create a listing user stories </summary>
+<br>
 <img src="/public/images/makersBnB_create_listing.png">
-Create a listing user stories
+</details>
 
+
+<details>
+<summary>Rent a property user stories </summary>
+<br>
 <img src="/public/images/makersBnB_rent_a_property.png">
-Rent a property user stories
+</details>
+
