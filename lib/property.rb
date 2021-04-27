@@ -11,4 +11,6 @@ class Property
     @price = price
   end
 
+  #do the database stuff boyo
+
 end
