@@ -14,10 +14,10 @@ Capybara.app = Airbnb
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
 
-  # config.before(:each) do
-  #   conn = PG.connect(dbname: 'bookmark_manager_test')
-  #   conn.exec('TRUNCATE TABLE bookmarks')
-  # end #CHANGE TEST DATABASES
+  config.before(:each) do
+    conn = PG.connect(dbname: 'airbnb_test')
+    conn.exec('TRUNCATE TABLE users CASCADE')
+  end #CHANGE TEST DATABASES
 
   
   config.expect_with :rspec do |expectations|
