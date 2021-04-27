@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'pg'
 require 'sinatra/flash'
+require_relative './lib/user.rb'
 
 
 class Airbnb < Sinatra::Base
@@ -23,7 +24,8 @@ class Airbnb < Sinatra::Base
   end
 
   post '/user/new' do
-    User.create(params[:email], params[:name], params[:password])
+    user = User.create(params[:name], params[:email], params[:password])
+    flash[:confirm] = "Welcome #{user.name}!" if user
     redirect '/'
   end
 
