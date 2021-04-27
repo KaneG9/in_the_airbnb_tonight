@@ -9,7 +9,6 @@ describe User do
       user = User.all
       expect(user.first.email).to eq 'test0@email.com'
       expect(user.first.name).to eq 'test name'
-      expect(user.first.password).to eq 'password1234'
       expect(user.length).to eq 10
     end
   end   
@@ -20,7 +19,11 @@ describe User do
       user = User.all.first
       expect(user.email).to eq 'Kane@email.com'
       expect(user.name).to eq 'Kane'
-      expect(user.password).to eq 'Kane_password'
+    end
+
+    it 'hashes the password using Bcrypt' do
+      expect(BCrypt::Password).to receive(:create).with('Kane_password')
+      User.create('Kane', 'Kane@email.com', 'Kane_password')
     end
   end
 
@@ -29,8 +32,16 @@ describe User do
       User.create('Tiffany', 'tiffany@email.com', 'tiff123')
       user = User.find('tiffany@email.com')
       expect(user.name).to eq 'Tiffany'
-      expect(user.password).to eq 'tiff123'
     end
   end
+
+  describe '#authenticate' do
+    it 'returns a user if correct username + password given' do
+      user = User.create('Kane', 'Kane@email.com', 'Kane_password')
+      authenticated_user = User.authenticate('Kane@email.com', 'Kane_password')
+      expect(user.email).to eq authenticated_user.email
+    end
+  end
+  
 
 end

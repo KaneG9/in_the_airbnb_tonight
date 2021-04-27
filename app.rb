@@ -37,8 +37,8 @@ class Airbnb < Sinatra::Base
   end
 
   post '/session/new' do
-    user = User.find(params[:email])
-    if user.password == params[:password]
+    user = User.authenticate(params[:email], params[:password])
+    if user
       session[:user] = user
       flash[:confirm] = "Welcome #{user.name}! Successfully logged in!"
       redirect '/homepage'

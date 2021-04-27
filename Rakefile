@@ -9,7 +9,7 @@ task :setup do
     connection = PG.connect(dbname: database)
     connection.exec("CREATE TABLE users (id SERIAL PRIMARY KEY,
       email VARCHAR (50) UNIQUE,
-      password VARCHAR (50),
+      password VARCHAR (100),
       name VARCHAR (50)
     );")
     connection.exec("CREATE TABLE properties (id SERIAL PRIMARY KEY,
