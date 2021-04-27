@@ -48,7 +48,10 @@ class Airbnb < Sinatra::Base
     end
   end
 
-  get '/sessions/destroy' do
+  post '/session/destroy' do
+    session[:user] = nil
+    flash[:confirm] = "Successful log out"
+    redirect '/'
   end
 
   get '/property/new' do
