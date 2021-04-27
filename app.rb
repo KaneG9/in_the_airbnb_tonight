@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'sinatra/reloader'
 require 'pg'
 require 'sinatra/flash'
-require_relative './lib/user.rb'
-
+require_relative './lib/user'
 
 class Airbnb < Sinatra::Base
   configure :development do
@@ -24,8 +25,12 @@ class Airbnb < Sinatra::Base
   end
 
   post '/user/new' do
-    user = User.create(params[:name], params[:email], params[:password])
-    flash[:confirm] = "Welcome #{user.name}! Account has been created!" if user
+    if User.find(params[:email])
+      flash[:error] = 'User already exists, please log in!'
+    else
+      user = User.create(params[:name], params[:email], params[:password])
+      flash[:confirm] = "Welcome #{user.name}! Account has been created!"
+    end
     redirect '/'
   end
 
@@ -43,14 +48,14 @@ class Airbnb < Sinatra::Base
       flash[:confirm] = "Welcome #{user.name}! Successfully logged in!"
       redirect '/homepage'
     else
-      flash[:error] = "Sorry email or password does not match!"
+      flash[:error] = 'Sorry email or password does not match!'
       redirect '/'
     end
   end
 
   post '/session/destroy' do
     session[:user] = nil
-    flash[:confirm] = "Successful log out"
+    flash[:confirm] = 'Successful log out'
     redirect '/'
   end
 
@@ -58,7 +63,6 @@ class Airbnb < Sinatra::Base
   end
 
   get '/property/:id' do
-    
   end
 
   get '/property/:id/confirm' do
@@ -66,5 +70,4 @@ class Airbnb < Sinatra::Base
 
   get '/property/:id/request' do
   end
-
 end

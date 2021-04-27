@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 require 'user'
 require 'pg'
 
 describe User do
-
   describe '#all method' do
-    it "can list all users" do
+    it 'can list all users' do
       10.times { |n| User.create('test name', "test#{n}@email.com", 'password1234') }
       user = User.all
       expect(user.first.email).to eq 'test0@email.com'
       expect(user.first.name).to eq 'test name'
       expect(user.length).to eq 10
     end
-  end   
-  
+  end
+
   describe '#create' do
     it 'can add a user to the db' do
       User.create('Kane', 'Kane@email.com', 'Kane_password')
@@ -33,6 +34,9 @@ describe User do
       user = User.find('tiffany@email.com')
       expect(user.name).to eq 'Tiffany'
     end
+    it 'returns nil if no matches found' do
+      expect(User.find('tiffany@email.com')).to eq nil
+    end
   end
 
   describe '#authenticate' do
@@ -42,6 +46,4 @@ describe User do
       expect(user.email).to eq authenticated_user.email
     end
   end
-  
-
 end

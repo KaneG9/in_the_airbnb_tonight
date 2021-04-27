@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 def sign_up
-  visit '/' 
+  visit '/'
   click_button 'Sign up'
   fill_in('name', with: 'test name')
   fill_in('email', with: 'test@email.com')

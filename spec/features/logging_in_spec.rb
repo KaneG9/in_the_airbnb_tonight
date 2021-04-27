@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../web_helpers'
 
 feature 'logging in' do
