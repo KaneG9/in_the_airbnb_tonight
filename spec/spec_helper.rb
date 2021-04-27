@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
@@ -10,20 +12,15 @@ ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
-
-
 Capybara.app = Airbnb
-
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-
   config.before(:each) do
-    setup_test_environment
-    clear_test_database
-  end #CHANGE TEST DATABASES
+    conn = PG.connect(dbname: 'airbnb_test')
+    conn.exec('TRUNCATE TABLE users, properties;') #CHECK WORKS
+  end
 
-  
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -33,6 +30,4 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
-
-
 end

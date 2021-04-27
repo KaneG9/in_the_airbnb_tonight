@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'pg'
 
 task :setup do
-  p "Creating databases..."
+  p 'Creating databases...'
 
-  ['airbnb', 'airbnb_test'].each do |database|
+  %w[airbnb airbnb_test].each do |database|
     connection = PG.connect
-    connection.exec("CREATE DATABASE #{ database };")
+    connection.exec("CREATE DATABASE #{database};")
     connection = PG.connect(dbname: database)
     connection.exec("CREATE TABLE users (id SERIAL PRIMARY KEY,
       email VARCHAR (50) UNIQUE,
-      password VARCHAR (50),
+      password VARCHAR (100),
       name VARCHAR (50)
     );")
     connection.exec("CREATE TABLE properties (id SERIAL PRIMARY KEY,
@@ -21,5 +23,5 @@ task :setup do
       FOREIGN KEY (user_id) REFERENCES users (id),
       price_per_day INT
     );")
-    end
   end
+end
