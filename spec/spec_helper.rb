@@ -3,6 +3,8 @@ require 'capybara/rspec'
 require 'rspec'
 require 'pg'
 require 'sinatra/flash'
+require_relative 'web_helpers'
+require_relative 'database_scripts'
 
 ENV['RACK_ENV'] = 'test'
 
@@ -17,8 +19,8 @@ Capybara.app = Airbnb
 RSpec.configure do |config|
 
   config.before(:each) do
-    conn = PG.connect(dbname: 'airbnb_test')
-    conn.exec('TRUNCATE TABLE properties')
+    setup_test_environment
+    clear_test_database
   end #CHANGE TEST DATABASES
 
   
