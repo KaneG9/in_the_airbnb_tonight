@@ -3,6 +3,10 @@
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require 'pg'
+require 'sinatra/flash'
+require_relative 'web_helpers'
+require_relative 'database_scripts'
 
 ENV['RACK_ENV'] = 'test'
 
@@ -14,7 +18,7 @@ Capybara.app = Airbnb
 RSpec.configure do |config|
   config.before(:each) do
     conn = PG.connect(dbname: 'airbnb_test')
-    conn.exec('TRUNCATE TABLE users CASCADE')
+    conn.exec('TRUNCATE TABLE users, properties;') #CHECK WORKS
   end
 
   config.expect_with :rspec do |expectations|

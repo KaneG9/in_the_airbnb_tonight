@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property/New</title>
+</head>
+<body>
+ <% flash.keys.each do |type| %>
+  <div data-alert class="flash <%= type %> alert-box radius">
+    <%= flash[type] %>
+    <a href="/homepage" class="close">&times;</a>
+  </div>
+<% end %>
+  Please give us your property details
+  <form action="/property/new" method="post">
+    <label for="title">Title:
+      <input type="text" name="title" placeholder="Give your listing a name">
+    </label>
+    <label for="address">Address:
+      <input type="text" name="address" placeholder="Street address">
+    </label>
+    <label for="postcode">Postcode:
+      <input type="text" name="postcode" placeholder="Postcode">
+    </label>
+    <label for="description">Description:
+      <textarea id="description" name="description" rows="5" cols="20">
+      Tell us about what makes your property special
+      </textarea> 
+    </label>
+    <label for="number">Price:
+      <input type="number" name="price_per_day" placeholder="How much would you like to rent it for">
+    </label>
+    <button type='submit' value="Create listing"> Create listing</button>
+  </form>
+</body>
+</html>

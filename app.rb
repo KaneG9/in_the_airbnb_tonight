@@ -1,18 +1,22 @@
+
 # frozen_string_literal: true
 
 require 'sinatra'
 require 'sinatra/reloader'
 require 'pg'
 require 'sinatra/flash'
+require_relative './lib/property'
 require_relative './lib/user'
+
 
 class Airbnb < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
+    register Sinatra::Flash
   end
 
   enable :sessions, :method_override
-  register Sinatra::Flash
+  
 
   # MAKE SURE GET AND POST ARE RIGHT
 
@@ -35,6 +39,7 @@ class Airbnb < Sinatra::Base
   end
 
   get '/homepage' do
+    @properties = Property.all
     erb :homepage
   end
 
@@ -60,6 +65,17 @@ class Airbnb < Sinatra::Base
   end
 
   get '/property/new' do
+    erb(:"property/new")
+  end
+
+  post '/property/new' do
+    property = Property.create(address: params[:address], postcode: params[:postcode], title: params[:title], description: params[:description], price_per_day: params[:price_per_day])
+    if property
+      flash[:success] = 'You have successfully created a listing'
+    else
+      flash[:danger] = 'Something went wrong'
+    end
+    redirect '/homepage' 
   end
 
   get '/property/:id' do

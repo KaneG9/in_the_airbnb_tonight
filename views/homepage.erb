@@ -7,8 +7,9 @@
   <title>Welcome to AirBnb</title>
 </head>
 <body>
-<h2> Here are the available listings: </h2>
-<% flash.keys.each do |type| %>
+  <h1>Welcome to MakersBnB </h1>
+  <h2> Here are the available listings: </h2>
+  <% flash.keys.each do |type| %>
         <div data-alert class="flash <%= type %> alert-box radius">
             <%= flash[type] %>
             <a href="/homepage" class="close">&times;</a>
@@ -17,4 +18,13 @@
   <form action="/session/destroy" method='post'>
     <input type="submit" value='Logout'>
   </form>
+  <form action="/property/new" method="get">
+    <button type="submit"> List a property </button>
+  </form>
+  <% @properties.each do |property| %>
+    <%= property.title%>
+    <%= "Property area: #{property.postcode} Property details #{property.description} "%>
+    <br>
+  <% end %>
 </body>
+</html>
