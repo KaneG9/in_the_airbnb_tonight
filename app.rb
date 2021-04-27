@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'sinatra/reloader'
-require_relative './lib/bookmark'
 require 'pg'
 require 'sinatra/flash'
 
@@ -22,6 +21,7 @@ class Airbnb < Sinatra::Base
   end
 
   get '/homepage' do
+    erb :homepage
   end
 
   post '/homepage' do
