@@ -7,6 +7,12 @@
   <title>Property/New</title>
 </head>
 <body>
+ <% flash.keys.each do |type| %>
+  <div data-alert class="flash <%= type %> alert-box radius">
+    <%= flash[type] %>
+    <a href="#" class="close">&times;</a>
+  </div>
+<% end %>
   Please give us your property details
   <form action="/property/new" method="post">
     <input type="text" name="title" placeholder="Give your listing a name">
@@ -14,7 +20,7 @@
     <input type="text" name="postcode" placeholder="Postcode">
     <input type="textarea" name="description" placeholder="Tell us about what makes your property special">
     <input type="number" name="price_per_day" placeholder="How much would you like to rent it for">
-    <button type='submit' value="Create listing">
+    <button type='submit' value="Create listing"> Create listing</button>
   </form>
 </body>
 </html>

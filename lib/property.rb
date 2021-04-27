@@ -25,4 +25,14 @@ class Property
     Property.new(id: result[0]['id'], postcode: result[0]['postcode'], title: result[0]['title'], description: result[0]['description'], price_per_day: result[0]['price_per_day'])
   end
 
+  def self.all
+    if ENV['RACK_ENV'] == 'test'
+      connection = PG.connect(dbname: 'airbnb_test')
+    else
+      connection = PG.connect(dbname: 'airbnb')
+    end
+    result = connection.exec("SELECT * FROM properties")
+    result.map { |property| Property.new(id: property['id'], postcode: property['postcode'], title: property['title'], description: property['description'], price_per_day: property['price_per_day'].to_i) }
+  end
+
 end

@@ -7,12 +7,20 @@
   <title>Homepage</title>
 </head>
 <body>
+ <% flash.keys.each do |type| %>
+  <div data-alert class="flash <%= type %> alert-box radius">
+    <%= flash[type] %>
+    <a href="#" class="close">&times;</a>
+  </div>
+<% end %>
   Welcome to MakersBnB
   <form action="/property/new" method="get">
     <button type="submit"> List a property </button>
   </form>
   <% @properties.each do |property| %>
-    <%= property.postcode %>
+    <%= property.title%>
+    <%= "Property area: #{property.postcode} Property details #{property.description} "%>
+    <br>
   <% end %>
 </body>
 </html>
