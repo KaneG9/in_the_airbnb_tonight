@@ -1,5 +1,6 @@
 require 'pg'
 require 'bcrypt'
+require './database_connection_setup'
 
 class User
 
@@ -11,46 +12,25 @@ class User
   end
 
   def self.all
-    if ENV['RACK_ENV'] == 'test'
-      connection = PG.connect(dbname: 'airbnb_test')
-    else
-      connection = PG.connect(dbname: 'airbnb')
-    end
-
-    result = connection.exec('SELECT * FROM users;')
+    result = DatabaseConnection.query('SELECT * FROM users;')
     result.map do |user|
       User.new(name: user['name'], email: user['email'])
     end
   end
 
   def self.create(name, email, password)
-    if ENV['RACK_ENV'] == 'test'
-      connection = PG.connect(dbname: 'airbnb_test')
-    else
-      connection = PG.connect(dbname: 'airbnb')
-    end
     encrypted_password = BCrypt::Password.create(password)
-    result = connection.exec("INSERT INTO users(email, name, password) VALUES('#{email}', '#{name}', '#{encrypted_password}') RETURNING name, email;")
+    result = DatabaseConnection.query("INSERT INTO users(email, name, password) VALUES('#{email}', '#{name}', '#{encrypted_password}') RETURNING name, email;")
     User.new(name: result[0]['name'], email: result[0]['email'])
   end
 
   def self.find(email)
-    if ENV['RACK_ENV'] == 'test'
-      connection = PG.connect(dbname: 'airbnb_test')
-    else
-      connection = PG.connect(dbname: 'airbnb')
-    end
-    result  = connection.exec("SELECT * FROM users WHERE email = '#{email}';")
+    result  = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}';")
     User.new(name: result[0]['name'], email: result[0]['email'])
   end
 
   def self.authenticate(email, password)
-    if ENV['RACK_ENV'] == 'test'
-      connection = PG.connect(dbname: 'airbnb_test')
-    else
-      connection = PG.connect(dbname: 'airbnb')
-    end
-    result  = connection.exec("SELECT * FROM users WHERE email = '#{email}';")
+    result  = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}';")
     
     return unless result.any?
     return unless BCrypt::Password.new(result[0]['password']) == password
