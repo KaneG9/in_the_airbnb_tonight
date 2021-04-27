@@ -44,7 +44,7 @@ class Airbnb < Sinatra::Base
 
   post '/property/new' do
     #need logic here to instantiate property object from database
-    Property.create(postcode: params[:postcode], title: params[:title], description: params[:description], price: params[:price])
+    Property.create(postcode: params[:postcode], title: params[:title], description: params[:description], price_per_day: params[:price_per_day])
     redirect '/homepage' 
   end
 
