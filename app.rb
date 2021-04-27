@@ -7,6 +7,7 @@ require 'pg'
 require 'sinatra/flash'
 require_relative './lib/property'
 require_relative './lib/user'
+require './database_connection_setup'
 
 
 class Airbnb < Sinatra::Base
@@ -17,8 +18,6 @@ class Airbnb < Sinatra::Base
 
   enable :sessions, :method_override
   
-
-  # MAKE SURE GET AND POST ARE RIGHT
 
   get '/' do
     erb :index
