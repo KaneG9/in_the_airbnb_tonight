@@ -8,7 +8,7 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 
 
-Capybara.app = BookmarkManager
+Capybara.app = Airbnb
 
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

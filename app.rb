@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'sinatra/reloader'
-require_relative './lib/bookmark'
 require 'pg'
 require 'sinatra/flash'
 
@@ -16,9 +15,16 @@ class Airbnb < Sinatra::Base
   # MAKE SURE GET AND POST ARE RIGHT
 
   get '/' do
+    erb :index
   end
 
-  post '/' do
+  get '/user/new' do
+    erb :sign_up
+  end
+
+  post '/user/new' do
+    User.create(params[:email], params[:name], params[:password])
+    redirect '/'
   end
 
   get '/homepage' do
