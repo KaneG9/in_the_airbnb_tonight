@@ -24,4 +24,13 @@ describe User do
     end
   end
 
+  describe '#find method' do
+    it 'can find user from database' do
+      User.create('Tiffany', 'tiffany@email.com', 'tiff123')
+      user = User.find('tiffany@email.com')
+      expect(user.name).to eq 'Tiffany'
+      expect(user.password).to eq 'tiff123'
+    end
+  end
+
 end

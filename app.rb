@@ -25,17 +25,27 @@ class Airbnb < Sinatra::Base
 
   post '/user/new' do
     user = User.create(params[:name], params[:email], params[:password])
-    flash[:confirm] = "Welcome #{user.name}!" if user
+    flash[:confirm] = "Welcome #{user.name}! Account has been created!" if user
     redirect '/'
   end
 
   get '/homepage' do
+    erb :homepage
   end
 
   post '/homepage' do
   end
 
-  get '/sessions/new' do
+  post '/session/new' do
+    user = User.find(params[:email])
+    if user.password == params[:password]
+      session[:user] = user
+      flash[:confirm] = "Welcome #{user.name}! Successfully logged in!"
+      redirect '/homepage'
+    else
+      flash[:error] = "Sorry email or password does not match!"
+      redirect '/'
+    end
   end
 
   get '/sessions/destroy' do

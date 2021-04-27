@@ -29,9 +29,18 @@ class User
     else
       connection = PG.connect(dbname: 'airbnb')
     end
-    result = connection.exec("INSERT INTO users(email,name,password) VALUES('#{email}', '#{name}', '#{password}') RETURNING email, name, password;")
+    result = connection.exec("INSERT INTO users(email,name,password) VALUES('#{email}', '#{name}', '#{password}') RETURNING name, email, password;")
     User.new(name: result[0]['name'], email: result[0]['email'], password: result[0]['password'])
   end
-  
+
+  def self.find(email)
+    if ENV['RACK_ENV'] == 'test'
+      connection = PG.connect(dbname: 'airbnb_test')
+    else
+      connection = PG.connect(dbname: 'airbnb')
+    end
+    result  = connection.exec("SELECT * FROM users WHERE email = '#{email}';")
+    User.new(name: result[0]['name'], email: result[0]['email'], password: result[0]['password'])
+  end
 
 end
