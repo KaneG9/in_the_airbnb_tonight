@@ -85,5 +85,22 @@
     <br>
     <input type="submit" value="Request rental">
   </form>
+  <br>
+  <table style="width:50%" id='bookings_table'>
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Booking Status</th>
+    </tr>
+    <% if @bookings != nil %>
+      <% @bookings.each do |booking|%>
+        <tr>
+          <td><%=booking.start_date%></td>
+          <td><%=booking.end_date%></td>
+          <td><%=booking.status%></td>
+        </tr>
+      <%end%>
+    <%end%>
+  </table>
 </body>
 </html>
