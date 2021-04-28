@@ -42,13 +42,9 @@ describe User do
       expect(find.name).to eq 'Tiffany'
     end
 
-    # it 'returns nil if no matches found' do
-    #   user = User.create('Tiffany', 'tiffany@email.com', 'tiff123')
-    #   id = user.id.to_i + 1
-    #   nil_id = id.to_s
-    #   expect(User.find(nil_id)).to eq nil
-    # end
-    #find id function seems to work and test is bad, dont have better test
+    it 'returns nil if no matches found' do
+      expect(User.find(nil)).to eq nil
+    end
   end
 
   describe '#authenticate' do
