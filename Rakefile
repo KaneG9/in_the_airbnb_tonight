@@ -23,5 +23,12 @@ task :setup do
       FOREIGN KEY (user_id) REFERENCES users (id),
       price_per_day INT
     );")
+
+    #-----CREATE MESSAGES TABLE------
+    # https://www.enterprisedb.com/postgres-tutorials/using-select-query-data-single-table-and-multiple-tables
+    # 
+    # connection.exec("CREATE TABLE messages (id SERIAL PRIMARY KEY,
+    #   
+    # );")
   end
 end

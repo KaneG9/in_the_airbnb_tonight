@@ -92,6 +92,12 @@ class Airbnb < Sinatra::Base
   get '/property/:id/confirm' do
   end
 
-  get '/property/:id/request' do
+  # get '/property/:id/request' do
+  # end
+
+  post '/property/:id/request' do
+    property = Property.find(params[:id])
+    Message.create(property_owner_id: property.user_id, property_id: params[:id])
+    # redirect '/homepage'
   end
 end

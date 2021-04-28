@@ -48,4 +48,18 @@ describe Property do
       #converts to integer to be stored for easy manipulation and calculation, can interpolate into views. possibly change to string?
     end
   end
+
+  context '#find method' do
+    it 'can find property from database' do
+      user = User.create('test name', "test@email.com", 'password1234')
+      property = Property.create(address: '123 fake street', postcode: 'E19 4RH', title: 'Dummy property listing', description: 'generic property info', user_id: user.id, price_per_day: 100)
+      find = Property.find(property.id)
+      expect(find.postcode).to eq 'E19 4RH'
+    end
+
+    it 'returns nil if no matches found' do
+      expect(Property.find(nil)).to eq nil
+    end
+  end
+
 end

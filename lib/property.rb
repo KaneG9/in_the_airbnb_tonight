@@ -40,4 +40,16 @@ class Property
                 }
   end
 
+  def self.find(id)
+    return nil unless id
+    result = DatabaseConnection.query("SELECT * FROM properties WHERE id = '#{id}';")
+
+    Property.new(id: result[0]['id'], 
+                postcode: result[0]['postcode'], 
+                title: result[0]['title'],
+                description: result[0]['description'], 
+                user_id: result[0]['user_id'],
+                price_per_day: result[0]['price_per_day'])
+  end
+
 end

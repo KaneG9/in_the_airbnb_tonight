@@ -18,13 +18,17 @@
   <form action="/session/destroy" method='post'>
     <input type="submit" value='Logout'>
   </form>
-  <form action="/property/<% @user.id %>/new" method="get">
+  <form action="/property/new" method="get">
     <button type="submit"> List a property </button>
   </form>
+
   <% @properties.each do |property| %>
     <%= property.title%>
     <%= "Property area: #{property.postcode} Property details #{property.description} "%>
     <br>
+    <form action="/property/<%= property.id %>/request" method="post">
+      <button type="submit"> Rent Property </button>
+    </form>
   <% end %>
 </body>
 </html>
