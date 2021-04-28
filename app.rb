@@ -29,7 +29,7 @@ class Airbnb < Sinatra::Base
   end
 
   post '/user/new' do
-    if User.find(params[:email])
+    if User.find(session[:user_id])
       flash[:error] = 'User already exists, please log in!'
     else
       user = User.create(params[:name], params[:email], params[:password])
@@ -49,7 +49,7 @@ class Airbnb < Sinatra::Base
   post '/session/new' do
     user = User.authenticate(params[:email], params[:password])
     if user
-      session[:user] = user
+      session[:user_id] = user.id
       flash[:confirm] = "Welcome #{user.name}! Successfully logged in!"
       redirect '/homepage'
     else
