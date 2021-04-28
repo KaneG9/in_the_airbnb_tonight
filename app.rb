@@ -84,9 +84,14 @@ class Airbnb < Sinatra::Base
   end
 
   post '/property/:id' do
+    booking = Booking.create(start_date: "#{params[:start_year]}-#{params[:start_month]}-#{params[:start_day]}",
+       end_date: "#{params[:end_year]}-#{params[:end_month]}-#{params[:end_day]}", 
+       renter_id: session[:user].id,
+       property_id: params[:id],
+       status: "pending review")
     # add to booking database with params
     # flash message
-    redirect "/property/#{params['id']}"
+    redirect "/property/#{params[:id]}"
   end
 
   get '/property/:id/request' do

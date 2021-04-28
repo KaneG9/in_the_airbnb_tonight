@@ -16,7 +16,6 @@ feature 'booking a property' do
     page.select '8', from: 'end_day'
     page.select 'February', from: 'end_month'
     page.select '2022', from: 'end_year'
-    save_and_open_page
     click_button 'Request rental'
     expect(page).to have_content 'Your rental request has been sent.'
   end
