@@ -14,7 +14,7 @@
   </div>
 <% end %>
   Please give us your property details
-  <form action="/property/new" method="post">
+  <form action="/property/<%= @user.id %>/new" method="post">
     <label for="title">Title:
       <input type="text" name="title" placeholder="Give your listing a name">
     </label>

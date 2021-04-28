@@ -17,6 +17,9 @@ class Airbnb < Sinatra::Base
 
   enable :sessions, :method_override
   
+  before do
+    @user = User.find(session[:user_id])
+  end
 
   # MAKE SURE GET AND POST ARE RIGHT
 
@@ -68,8 +71,13 @@ class Airbnb < Sinatra::Base
     erb(:"property/new")
   end
 
-  post '/property/new' do
-    property = Property.create(address: params[:address], postcode: params[:postcode], title: params[:title], description: params[:description], price_per_day: params[:price_per_day])
+  post '/property/:id/new' do
+    property = Property.create(address: params[:address], 
+                               postcode: params[:postcode], 
+                               title: params[:title], 
+                               description: params[:description], 
+                               user_id: params[:id],
+                               price_per_day: params[:price_per_day])
     if property
       flash[:success] = 'You have successfully created a listing'
     else

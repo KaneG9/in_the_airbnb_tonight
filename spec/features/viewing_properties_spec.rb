@@ -1,6 +1,7 @@
 feature 'View properties on homepage' do
   scenario 'User can see a listed property' do
-    # sign_in_helper
+    sign_up
+    sign_in
     visit '/homepage'
     create_test_property
 

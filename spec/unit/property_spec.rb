@@ -2,11 +2,6 @@ require 'property'
 
 describe Property do
   let(:property) {Property.new(id: 1, postcode: 'E19 4RH', title: 'Dummy property listing', description: 'generic property info', user_id: "1", price_per_day: 100)}
-  
-  # let(:user_double) { double(:user, id: "1", name: "Finn", email: "finn@email.com") }
-  # let(:user_double_2) { double(:user, id: "2", name: "Matt", email: "matt@email.com") } 
-
-  #  *** couldn't get test doubles to work with databases - possible issues of doubles not existing in databases.
 
   context '#initialize' do
     it 'should have attributes' do
@@ -14,7 +9,7 @@ describe Property do
       expect(property.postcode).to eq 'E19 4RH'
       expect(property.title).to eq 'Dummy property listing'
       expect(property.description).to eq 'generic property info'
-      # expect(property.user_id).to eq 
+      expect(property.user_id).not_to be_nil
       expect(property.price_per_day).to eq 100
     end
 
