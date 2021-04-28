@@ -90,6 +90,7 @@ class Airbnb < Sinatra::Base
   end
 
   get '/property/:id/confirm' do
+    # accept message method flips @message.read field to true, stops rendering
   end
 
   # get '/property/:id/request' do
@@ -97,7 +98,12 @@ class Airbnb < Sinatra::Base
 
   post '/property/:id/request' do
     property = Property.find(params[:id])
-    Message.create(property_owner_id: property.user_id, property_id: params[:id])
-    # redirect '/homepage'
+    message = Message.create(property_owner_id: property.user_id, property_id: params[:id])
+    if message
+      flash[:success] = 'You have successfully requested to rent'
+    else
+      flash[:danger] = 'There was a problem with your requested propery'
+    end
+    redirect '/homepage'
   end
 end

@@ -17,9 +17,18 @@ class Message
                                       RETURNING property_owner_id, property_id;")
 
     Message.new(property_owner_id: result[0]['property_owner_id'], 
-                requested_property: result[0]['property_id'])
+                property_id: result[0]['property_id'])
 
 
       #
   end
+
+  def self.all
+    result = DatabaseConnection.query("SELECT * FROM messages")
+    # recreate this query with SQL that pulls user data/record from owner_id field and pulls property data from property table
+    result.map { |message| 
+                          Message.new(property_owner_id: message[0]['property_owner_id'], 
+                                      property_id: message[0]['property_id'])
+  end
+
 end

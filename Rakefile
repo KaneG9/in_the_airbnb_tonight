@@ -28,7 +28,7 @@ task :setup do
     # https://www.enterprisedb.com/postgres-tutorials/using-select-query-data-single-table-and-multiple-tables
     # 
     # connection.exec("CREATE TABLE messages (id SERIAL PRIMARY KEY,
-    #   
+    #   HAVE COLUMN READ, TRUE/ FALSE, ACCEPT METHOD SETS TO TRUE
     # );")
   end
 end
