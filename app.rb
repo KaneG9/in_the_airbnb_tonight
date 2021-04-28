@@ -78,9 +78,15 @@ class Airbnb < Sinatra::Base
   end
 
   get '/property/:id' do
+    @id = params['id']
+    #find by property id
+    erb :'property/id'
   end
 
-  get '/property/:id/confirm' do
+  post '/property/:id' do
+    # add to booking database with params
+    # flash message
+    redirect "/property/#{params['id']}"
   end
 
   get '/property/:id/request' do
