@@ -8,6 +8,7 @@ require 'sinatra/flash'
 require_relative './lib/property'
 require_relative './lib/user'
 require './database_connection_setup'
+require './lib/booking'
 
 
 class Airbnb < Sinatra::Base
@@ -84,13 +85,12 @@ class Airbnb < Sinatra::Base
   end
 
   post '/property/:id' do
-    booking = Booking.create(start_date: "#{params[:start_year]}-#{params[:start_month]}-#{params[:start_day]}",
-       end_date: "#{params[:end_year]}-#{params[:end_month]}-#{params[:end_day]}", 
-       renter_id: session[:user].id,
-       property_id: params[:id],
-       status: "pending review")
-    # add to booking database with params
-    # flash message
+    booking = Booking.create("#{params[:start_year]}-#{params[:start_month]}-#{params[:start_day]}",
+       "#{params[:end_year]}-#{params[:end_month]}-#{params[:end_day]}", 
+       params[:id],
+       session[:user].id,
+       "pending review")
+    flash[:confirm] = 'Your rental request has been sent.'
     redirect "/property/#{params[:id]}"
   end
 

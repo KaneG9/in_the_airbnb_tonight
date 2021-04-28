@@ -8,8 +8,13 @@
 </head>
 <body>
   Propetry details
-  <form action="/property/id" method='post'>
-    <input type="hidden" name="id" id="<%= @id %>">
+  <% flash.keys.each do |type| %>
+        <div data-alert class="flash <%= type %> alert-box radius">
+            <%= flash[type] %>
+            <a href="/property/<%= @id %>" class="close">&times;</a>
+        </div>
+  <% end %>
+  <form action="/property/<%= @id %>" method='post'>
     <label for="start_day">Start day:
       <select name="start_day" id="start_day">
         <% (1..31).each do |day| %>
