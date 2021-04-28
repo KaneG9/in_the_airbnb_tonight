@@ -79,8 +79,7 @@ class Airbnb < Sinatra::Base
   end
 
   get '/property/:id' do
-    @id = params['id']
-    #find by property id
+    @property = Property.find(params['id'])
     erb :'property/id'
   end
 

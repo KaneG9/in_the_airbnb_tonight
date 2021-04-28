@@ -35,4 +35,15 @@ class Booking
       status: booking[0]['status'])
   end
 
+  def self.find(id)
+    booking = DatabaseConnection.query("SELECT * FROM bookings WHERE id = #{id};")
+    return unless booking.any?
+    Booking.new(id: booking[0]['id'], 
+      start_date: booking[0]['start_date'], 
+      end_date: booking[0]['end_date'], 
+      property_id: booking[0]['property_id'], 
+      renter_id: booking[0]['renter_id'], 
+      status: booking[0]['status'])
+  end
+
 end

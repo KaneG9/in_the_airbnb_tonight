@@ -31,4 +31,14 @@ class Property
     result.map { |property| Property.new(id: property['id'], postcode: property['postcode'], title: property['title'], description: property['description'], price_per_day: property['price_per_day'].to_i) }
   end
 
+  def self.find(id)
+    result = DatabaseConnection.query("SELECT * FROM properties WHERE id = #{id};")
+    return unless result.any?
+    Property.new(id: result[0]['id'], 
+      postcode: result[0]['postcode'], 
+      title: result[0]['title'],
+      description: result[0]['description'], 
+      price_per_day: result[0]['price_per_day'])
+  end
+
 end

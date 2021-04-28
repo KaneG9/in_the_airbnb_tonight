@@ -12,9 +12,7 @@ describe Booking do
 
   describe '#all method' do
     it "can show all bookings" do
-      DatabaseConnection.query("INSERT INTO bookings (start_date, end_date, property_id, renter_id, status) 
-      VALUES ('2021-10-10', '2021-10-14', '#{@property[0]['id']}', '#{@user[0]['id']}', 'pending review') 
-      RETURNING start_date, end_date, property_id, renter_id, status;")
+      Booking.create('2021-10-10', '2021-10-14', "#{@property[0]['id']}", "#{@user[0]['id']}", 'pending review')
       booking = Booking.all 
       expect(booking.first.start_date).to eq '2021-10-10'
       expect(booking.first.end_date).to eq '2021-10-14'
@@ -35,4 +33,20 @@ describe Booking do
       expect(booking.first.status).to eq 'pending review'
     end
   end
+
+  describe '#find' do
+    it 'can find the property details from the id' do
+      result = Booking.create('2021-10-10', '2021-10-14', "#{@property[0]['id']}", "#{@user[0]['id']}", 'pending review')
+      booking = Booking.find(result.id)
+      expect(booking.start_date).to eq '2021-10-10'
+      expect(booking.end_date).to eq '2021-10-14'
+      expect(booking.property_id).to eq @property[0]['id']
+      expect(booking.renter_id).to eq @user[0]['id']
+      expect(booking.status).to eq 'pending review'
+    end
+    it 'returns nil if no matches found' do
+      expect(Booking.find(200)).to eq nil
+    end
+  end
+
 end
