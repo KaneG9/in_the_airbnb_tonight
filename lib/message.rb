@@ -5,12 +5,13 @@ require_relative 'property'
 require_relative 'database_connection'
 
 class Message
-  attr_reader :property_owner_id, :property_id, :renter_id
+  attr_reader :property_owner_id, :property_id, :renter_id, :title
 
-  def initialize(property_owner_id:, property_id:, renter_id:)
-    @property_owner_id = property_owner_id
-    @property_id = property_id
-    @renter_id = renter_id
+  def initialize(input)
+    @property_owner_id = input[:property_owner_id]
+    @property_id = input[:property_id]
+    @renter_id = input[:renter_id]
+    @title = input[:title] || nil
   end
 
   def self.create(property_owner_id:, property_id:, renter_id:)
@@ -30,5 +31,17 @@ class Message
                   property_id: message['property_id'],
                   renter_id: message['renter_id'])
     end
+  end
+
+  def self.join_properties(property_owner_id:)
+    result = DatabaseConnection.query("SELECT * FROM properties JOIN messages ON messages.property_owner_id = properties.user_id
+      WHERE read = false AND property_owner_id = '#{property_owner_id}' AND properties.id = messages.property_id")
+    result.map do |message|
+      Message.new(property_owner_id: message['property_owner_id'],
+                  property_id: message['property_id'],
+                  renter_id: message['renter_id'],
+                  title: message['title'])
+    end
+
   end
 end

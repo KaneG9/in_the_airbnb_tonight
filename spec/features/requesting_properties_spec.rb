@@ -38,7 +38,10 @@ feature 'Renting a property' do
 
     # ------OWNER CHECKS MESSAGES-----
     sign_in
+
+    # expect(page).not_to have_content 'error'
+    expect(page).to have_content 'A very real place you can visit'
     expect(page).to have_content 'Request'
-    expect(page).to have_content 'Approve'
+    expect(page).to have_button 'Confirm request'
   end
 end

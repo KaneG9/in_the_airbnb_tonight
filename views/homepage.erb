@@ -32,9 +32,9 @@
   <% end %>
   <% if @messages %>
     <% @messages.each do |message| %>
-      <%= "Someone has requested #{@property.title} "%>
-      <form action="/property/<%= property.id %>/confirm" method="post">
-      <button type="submit"> Rent Property </button>
+      <%= "New Request: Someone has requested #{message.title} "%>
+      <form action="/property/<%= message.property_id %>/confirm" method="post">
+      <button type="submit"> Confirm request </button>
     </form>
     <% end%>
   <% end%>

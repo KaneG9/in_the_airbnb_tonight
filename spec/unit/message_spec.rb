@@ -45,4 +45,27 @@ describe Message do
       # converts to integer to be stored for easy manipulation and calculation, can interpolate into views. possibly change to string?
     end
   end
+
+  context '.join_properties' do
+    it 'should returning an owners message with property details' do
+      renter = User.create('rent test name', 'rent@email.com', 'password1234')
+      owner = User.create('test name', 'test@email.com', 'password1234')
+      property_1 = Property.create(address: '123 fake street',
+                                   postcode: 'E19 4RH',
+                                   title: 'Dummy property listing',
+                                   description: 'generic property info',
+                                   user_id: owner.id,
+                                   price_per_day: 100)
+      message = Message.create(property_owner_id: property_1.user_id,
+                               property_id: property_1.id,
+                               renter_id: renter.id)
+
+      messages = Message.join_properties(property_owner_id: property_1.user_id)
+      expect(messages.size).to eq 1
+      expect(messages.first.property_owner_id).to eq owner.id
+      expect(messages.first.title).to eq 'Dummy property listing'
+
+      # converts to integer to be stored for easy manipulation and calculation, can interpolate into views. possibly change to string?
+    end
+  end
 end
