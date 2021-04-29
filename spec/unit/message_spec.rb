@@ -36,7 +36,7 @@ describe Message do
       message = Message.create(property_owner_id: property_1.user_id,
                                property_id: property_1.id,
                                renter_id: renter.id)
-      messages = Message.all
+      messages = Message.all(id: property_1.user_id)
 
       expect(messages.size).to eq 1
       expect(messages.first.property_owner_id).to eq owner.id

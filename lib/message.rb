@@ -23,8 +23,8 @@ class Message
                 renter_id: result[0]['renter_id'])
   end
 
-  def self.all
-    result = DatabaseConnection.query('SELECT * FROM messages WHERE read is false')
+  def self.all(id:)
+    result = DatabaseConnection.query("SELECT * FROM messages WHERE read = false AND property_owner_id = #{id}")
     result.map do |message|
       Message.new(property_owner_id: message['property_owner_id'],
                   property_id: message['property_id'],

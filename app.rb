@@ -42,6 +42,7 @@ class Airbnb < Sinatra::Base
 
   get '/homepage' do
     @properties = Property.all
+    @messages = Message.all(id: @user.id)
     erb :homepage
   end
 
