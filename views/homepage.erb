@@ -40,7 +40,7 @@
     </form>
     <% end%>
   <% end%>
-  <% if @confirmed_messages unless @request_messages%>
+  <% if @confirmed_messages%>
     <% @confirmed_messages.each do |message| %>
       <%= "Your request has been approved" %> <%# make message.confirmed message a join method and input name of property into confirmation%>
       <form action="/property/<%= message.property_id %>/accept_confirmation" method="post">
