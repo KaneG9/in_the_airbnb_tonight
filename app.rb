@@ -19,6 +19,9 @@ class Airbnb < Sinatra::Base
 
   enable :sessions, :method_override
   
+  before do 
+    @user = User.find(session[:user_id])
+  end
 
   get '/' do
     erb :index
@@ -49,7 +52,7 @@ class Airbnb < Sinatra::Base
   post '/session/new' do
     user = User.authenticate(params[:email], params[:password])
     if user
-      session[:user] = user
+      session[:user_id] = user.id
       flash[:confirm] = "Welcome #{user.name}! Successfully logged in!"
       redirect '/homepage'
     else
@@ -59,7 +62,7 @@ class Airbnb < Sinatra::Base
   end
 
   post '/session/destroy' do
-    session[:user] = nil
+    session[:user_id] = nil
     flash[:confirm] = 'Successful log out'
     redirect '/'
   end
@@ -88,7 +91,7 @@ class Airbnb < Sinatra::Base
     booking = Booking.create("#{params[:start_year]}-#{params[:start_month]}-#{params[:start_day]}",
        "#{params[:end_year]}-#{params[:end_month]}-#{params[:end_day]}", 
        params[:id],
-       session[:user].id,
+       session[:user_id],
        "pending review")
     flash[:confirm] = 'Your rental request has been sent.'
     redirect "/property/#{params[:id]}"

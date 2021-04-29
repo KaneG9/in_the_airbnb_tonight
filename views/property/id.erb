@@ -7,6 +7,12 @@
   <title>Viewing Propetry in <%= @property.postcode %></title> 
 </head>
 <body>
+  <form action="/session/destroy" method='post'>
+    <input type="submit" value='Logout'>
+  </form>
+  <form action="/homepage" method='get'>
+    <input type="submit" value='Homepage'>
+  </form>
   <h1> <%= @property.title%> </h1>
   <p>
     <%= @property.description%>
