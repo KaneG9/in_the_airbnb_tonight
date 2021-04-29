@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 require 'sinatra'
@@ -8,7 +7,6 @@ require 'sinatra/flash'
 require_relative './lib/property'
 require_relative './lib/user'
 
-
 class Airbnb < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
@@ -16,7 +14,7 @@ class Airbnb < Sinatra::Base
   end
 
   enable :sessions, :method_override
-  
+
   before do
     @user = User.find(session[:user_id])
   end
@@ -72,10 +70,10 @@ class Airbnb < Sinatra::Base
   end
 
   post '/property/:id/new' do
-    property = Property.create(address: params[:address], 
-                               postcode: params[:postcode], 
-                               title: params[:title], 
-                               description: params[:description], 
+    property = Property.create(address: params[:address],
+                               postcode: params[:postcode],
+                               title: params[:title],
+                               description: params[:description],
                                user_id: params[:id],
                                price_per_day: params[:price_per_day])
     if property
@@ -83,7 +81,7 @@ class Airbnb < Sinatra::Base
     else
       flash[:danger] = 'Something went wrong'
     end
-    redirect '/homepage' 
+    redirect '/homepage'
   end
 
   get '/property/:id' do

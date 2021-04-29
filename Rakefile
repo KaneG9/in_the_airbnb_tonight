@@ -35,4 +35,3 @@ task :setup do
     );")
   end
 end
-

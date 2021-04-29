@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/database_connection'
 
 def setup_test_environment

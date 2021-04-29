@@ -14,7 +14,7 @@ describe User do
     end
 
     it 'can return the user id' do
-      User.create('test name', "test@email.com", 'password1234')
+      User.create('test name', 'test@email.com', 'password1234')
       user = User.all
 
       expect(user.first.id).not_to be_nil
