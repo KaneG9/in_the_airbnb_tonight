@@ -36,14 +36,18 @@ describe User do
   end
 
   describe '#find method' do
-    it 'can find user from database' do
+    it 'can find user from database based on id' do
       user = User.create('Tiffany', 'tiffany@email.com', 'tiff123')
-      find = User.find(user.id)
+      find = User.find(column: 'id', value: user.id)
       expect(find.name).to eq 'Tiffany'
     end
 
-    it 'returns nil if no matches found' do
-      expect(User.find(nil)).to eq nil
+    it 'returns nil if value = nil' do
+      expect(User.find(column: 'id', value: nil)).to eq nil
+    end
+
+    it 'returns nil if if no matches found' do
+      expect(User.find(column: 'id', value: 10)).to eq nil
     end
   end
 

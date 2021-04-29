@@ -36,7 +36,7 @@ class Message
     end
   end
 
-  def self.join_properties(receiver_id:)
+  def self.find_rental_requests(receiver_id:)
     result = DatabaseConnection.query("SELECT * FROM properties JOIN messages ON messages.receiver_id = properties.user_id
       WHERE read = false AND receiver_id = '#{receiver_id}' AND properties.id = messages.property_id")
     result.map do |message|

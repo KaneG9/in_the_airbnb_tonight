@@ -19,7 +19,7 @@ class Airbnb < Sinatra::Base
   enable :sessions, :method_override
 
   before do
-    @user = User.find(session[:user_id])
+    @user = User.find(column: 'id', value: session[:user_id])
   end
 
   get '/' do
@@ -31,7 +31,7 @@ class Airbnb < Sinatra::Base
   end
 
   post '/user/new' do
-    if User.find(session[:user_id])
+    if User.find(column: 'email', value: params[:email])
       flash[:error] = 'User already exists, please log in!'
     else
       user = User.create(params[:name], params[:email], params[:password])
@@ -42,7 +42,7 @@ class Airbnb < Sinatra::Base
 
   get '/homepage' do
     @properties = Property.all
-    @request_messages = Message.join_properties(receiver_id: @user.id)
+    @request_messages = Message.find_rental_requests(receiver_id: @user.id)
     @confirmed_messages = Message.confirmed_messages(receiver_id: @user.id)
     erb :homepage
   end

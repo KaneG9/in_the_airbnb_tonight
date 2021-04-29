@@ -46,7 +46,7 @@ describe Message do
     end
   end
 
-  context '.join_properties' do
+  context '.find_rental_requests' do
     it 'should returning an owners message with property details' do
       renter = User.create('rent test name', 'rent@email.com', 'password1234')
       owner = User.create('test name', 'test@email.com', 'password1234')
@@ -60,7 +60,7 @@ describe Message do
                                property_id: property_1.id,
                                receiver_id: property_1.user_id)
 
-      messages = Message.join_properties(receiver_id: property_1.user_id)
+      messages = Message.find_rental_requests(receiver_id: property_1.user_id)
       expect(messages.size).to eq 1
       expect(messages.first.sender_id).to eq renter.id
       expect(messages.first.receiver_id).to eq property_1.user_id
