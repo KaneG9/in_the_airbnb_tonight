@@ -31,7 +31,8 @@ task :setup do
       receiver_id INT,
       FOREIGN KEY (receiver_id) REFERENCES users (id),
       read BOOLEAN NOT NULL DEFAULT false,
-      confirmed BOOLEAN NOT NULL DEFAULT false
+      confirmed BOOLEAN NOT NULL DEFAULT false,
+      booking_id INT
     );")
 
     connection.exec("CREATE TABLE bookings (id SERIAL PRIMARY KEY,
