@@ -1,0 +1,67 @@
+footer {
+  text-align: left;
+  padding: 3px;
+  background-color: rgb(6, 46, 65);
+  color: white;
+  font-family: Arial;
+  align-self: end;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.container {
+  text-align: left;
+  padding: 3px; 
+  background-color: rgb(6, 46, 65);
+  color: white;
+  font-family: Arial;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+} 
+
+.flash {
+  background-color: rgb(228, 134, 11);
+  color: white;
+  font-family: Arial;
+
+}
+
+body { 
+  background-color: aliceblue;
+  color: rgb(0, 0, 0);
+  font-family: Arial;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  margin-top: -80px;
+  margin-left: -80px;
+  
+  
+}
+
+h2 {
+  color: rgb(0, 0, 0);
+  font-family: Arial;
+  font-size: 50px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -100px;
+}
+/* FORMATTING FOR HORIZONTAL NAV BAR - ADD BACKGROUND AND ADJUST POSITION */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  top: 10%;
+  left: 50%;
+}

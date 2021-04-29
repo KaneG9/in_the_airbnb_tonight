@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="/css/style.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,19 @@
    </div>
 </head>
 <body>
-  <h1>Welcome to MakersBnB </h1>
-  <h2> Here are the available listings: </h2>
+<%# -------------- NAV BAR TRIAL CODE ---------------- %>
+<%# LINKS CURRENTLY NOT WORKING (OBVIOUSLY - NOT CONNECTED VIA CONTROLLER) %>
+  <ul>
+    <li><a href="/homepage">Home</a></li>
+    <li><a href="/property/new">List a Property</a></li>
+    <li><a href="/session/destroy">Logout</a></li>
+    <li><a href="/profile">Profile</a></li>
+  </ul>
+
+<%# -------------- NAV BAR TRIAL CODE ---------------- %>
+
+
+  <h2> Listings: </h2>
   <% flash.keys.each do |type| %>
         <div data-alert class="flash <%= type %> alert-box radius">
             <%= flash[type] %>
@@ -41,5 +53,11 @@
     </form>
     <% end%>
   <% end%>
+
+<footer>
+    <p>© Into the AirBnB Tonight 🦍 | 
+    <a href="https://github.com/MattDawson2020/in_the_airbnb_tonight">Project GitHub</a></p>
+  </footer>
+
 </body>
 </html>

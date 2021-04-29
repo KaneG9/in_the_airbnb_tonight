@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="/css/style.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,7 @@
   <form action="/homepage" method='get'>
     <input type="submit" value='Homepage'>
   </form>
-  Please give us your property details
+  <h2> List Your Property </h2>
   <form action="/property/new" method="post">
     <input type="hidden" name="user_id" id="user_id" value="<%= @user.id %>">
     <label for="title">Title:
@@ -40,5 +41,11 @@
     </label>
     <button type='submit' value="Create listing"> Create listing</button>
   </form>
+
+  <footer>
+    <p>© Into the AirBnB Tonight 🦍 | 
+    <a href="https://github.com/MattDawson2020/in_the_airbnb_tonight">Project GitHub</a></p>
+  </footer>
+
 </body>
 </html>
