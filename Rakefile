@@ -24,12 +24,12 @@ task :setup do
     );")
 
     connection.exec("CREATE TABLE messages (id SERIAL PRIMARY KEY,
-      property_owner_id INT,
-      FOREIGN KEY (property_owner_id) REFERENCES users (id),
+      sender_id INT,
+      FOREIGN KEY (sender_id) REFERENCES users (id),
       property_id INT,
       FOREIGN KEY (property_id) REFERENCES properties (id),
-      renter_id INT,
-      FOREIGN KEY (renter_id) REFERENCES users (id),
+      receiver_id INT,
+      FOREIGN KEY (receiver_id) REFERENCES users (id),
       read BOOLEAN NOT NULL DEFAULT false
     );")
 

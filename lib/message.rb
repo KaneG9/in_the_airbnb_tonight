@@ -5,43 +5,64 @@ require_relative 'property'
 require_relative 'database_connection'
 
 class Message
-  attr_reader :property_owner_id, :property_id, :renter_id, :title
+  attr_reader :id, :sender_id, :property_id, :receiver_id, :title
 
   def initialize(input)
-    @property_owner_id = input[:property_owner_id]
+    @sender_id = input[:sender_id]
     @property_id = input[:property_id]
-    @renter_id = input[:renter_id]
+    @receiver_id = input[:receiver_id]
     @title = input[:title] || nil
+    @id = input[:id]
   end
 
-  def self.create(property_owner_id:, property_id:, renter_id:)
-    result = DatabaseConnection.query("INSERT INTO messages (property_owner_id, property_id, renter_id)
-                                      VALUES('#{property_owner_id}', '#{property_id}', '#{renter_id}')
-                                      RETURNING property_owner_id, property_id, renter_id;")
+  def self.create(sender_id:, property_id:, receiver_id:)
+    result = DatabaseConnection.query("INSERT INTO messages (sender_id, property_id, receiver_id)
+                                      VALUES('#{sender_id}', '#{property_id}', '#{receiver_id}')
+                                      RETURNING id, sender_id, property_id, receiver_id;")
 
-    Message.new(property_owner_id: result[0]['property_owner_id'],
+    Message.new(sender_id: result[0]['sender_id'],
                 property_id: result[0]['property_id'],
-                renter_id: result[0]['renter_id'])
+                receiver_id: result[0]['receiver_id'],
+                id: result[0]['id'])
   end
 
   def self.all(id:)
-    result = DatabaseConnection.query("SELECT * FROM messages WHERE read = false AND property_owner_id = #{id}")
+    result = DatabaseConnection.query("SELECT * FROM messages WHERE read = false AND sender_id = #{id}")
     result.map do |message|
-      Message.new(property_owner_id: message['property_owner_id'],
+      Message.new(sender_id: message['sender_id'],
                   property_id: message['property_id'],
-                  renter_id: message['renter_id'])
+                  receiver_id: message['receiver_id'],
+                  id: message['id'])
     end
   end
 
-  def self.join_properties(property_owner_id:)
-    result = DatabaseConnection.query("SELECT * FROM properties JOIN messages ON messages.property_owner_id = properties.user_id
-      WHERE read = false AND property_owner_id = '#{property_owner_id}' AND properties.id = messages.property_id")
+  def self.join_properties(receiver_id:)
+    result = DatabaseConnection.query("SELECT * FROM properties JOIN messages ON messages.receiver_id = properties.user_id
+      WHERE read = false AND receiver_id = '#{receiver_id}' AND properties.id = messages.property_id")
     result.map do |message|
-      Message.new(property_owner_id: message['property_owner_id'],
+      Message.new(sender_id: message['sender_id'],
                   property_id: message['property_id'],
-                  renter_id: message['renter_id'],
-                  title: message['title'])
+                  receiver_id: message['receiver_id'],
+                  title: message['title'],
+                  id: message['id'])
     end
+  end
 
+  def self.read(id)
+    result = DatabaseConnection.query("UPDATE messages
+      SET read = true
+      WHERE id = #{id};")
+  end
+
+  def self.confirmed_messages(receiver_id:)
+    result = DatabaseConnection.query("SELECT * 
+                                      FROM messages 
+                                      WHERE read = false AND receiver_id = '#{receiver_id}';")
+    result.map do |message|
+      Message.new(sender_id: message['sender_id'],
+                  property_id: message['property_id'],
+                  receiver_id: message['receiver_id'],
+                  id: message['id'])
+    end
   end
 end

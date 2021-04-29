@@ -42,11 +42,9 @@ class Airbnb < Sinatra::Base
 
   get '/homepage' do
     @properties = Property.all
-    @request_messages = Message.join_properties(property_owner_id: @user.id)
+    @request_messages = Message.join_properties(receiver_id: @user.id)
+    @confirmed_messages = Message.confirmed_messages(receiver_id: @user.id)
     erb :homepage
-  end
-
-  post '/homepage' do
   end
 
   post '/session/new' do
@@ -92,19 +90,19 @@ class Airbnb < Sinatra::Base
     erb :'property/id'
   end
 
-
-  get '/property/:id/confirm' do
-    # accept message method flips @message.read field to true, stops rendering
+  post '/property/:id/accept_confirmation' do
+    Message.read(params[:message_id])
+    redirect "/property/#{params[:id]}"
   end
 
 
   post '/property/:id/confirm' do
-#     if message
-#       flash[:success] = 'You have successfully requested to rent'
-#     else
-#       flash[:danger] = 'There was a problem with your requested propery'
-#     end
-#     redirect '/homepage'
+    Message.read(params[:message_id])
+    Message.create(sender_id: @user.id, 
+                  property_id: params[:id], 
+                  receiver_id: params[:sender_id])
+    #booking status updated to confirmed
+    redirect '/homepage'
   end
 
   post '/property/:id' do
@@ -112,7 +110,9 @@ class Airbnb < Sinatra::Base
       flash[:error] = 'The date you have requested is in the past, Please try again.'
     else
       property = Property.find(params[:id])
-      message = Message.create(property_owner_id: property.user_id, property_id: params[:id], renter_id: @user.id)
+      message = Message.create(sender_id: @user.id, 
+                              property_id: params[:id], 
+                              receiver_id: property.user_id)
       booking = Booking.create(params[:start_date],
                                params[:end_date],
                                params[:id],
@@ -122,5 +122,4 @@ class Airbnb < Sinatra::Base
     end
     redirect "/property/#{params[:id]}"
   end
-  
 end
