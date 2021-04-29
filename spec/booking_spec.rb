@@ -14,7 +14,11 @@ describe Booking do
 
   describe '#all method' do
     it 'can show all bookings' do
-      Booking.create('2021-10-10', '2021-10-14', (@property[0]['id']).to_s, (@user[0]['id']).to_s, 'pending review')
+      Booking.create(start_date: '2021-10-10', 
+                    end_date: '2021-10-14',
+                    property_id: "#{@property[0]['id']}", 
+                    renter_id: "#{@user[0]['id']}",
+                    status: 'pending review')
       booking = Booking.all
       expect(booking.first.start_date).to eq '2021-10-10'
       expect(booking.first.end_date).to eq '2021-10-14'
@@ -26,7 +30,11 @@ describe Booking do
 
   describe '#create' do
     it 'can add a booking to db' do
-      Booking.create('2021-10-10', '2021-10-14', (@property[0]['id']).to_s, (@user[0]['id']).to_s, 'pending review')
+      Booking.create(start_date: '2021-10-10', 
+                    end_date: '2021-10-14',
+                    property_id: "#{@property[0]['id']}", 
+                    renter_id: "#{@user[0]['id']}",
+                    status: 'pending review')
       booking = Booking.all
       expect(booking.first.start_date).to eq '2021-10-10'
       expect(booking.first.end_date).to eq '2021-10-14'
@@ -38,8 +46,11 @@ describe Booking do
 
   describe '#find' do
     it 'can find the booking details from the id' do
-      result = Booking.create('2021-10-10', '2021-10-14', (@property[0]['id']).to_s, (@user[0]['id']).to_s,
-                              'pending review')
+      result = Booking.create(start_date: '2021-10-10', 
+                              end_date: '2021-10-14', 
+                              property_id: "#{@property[0]['id']}", 
+                              renter_id: "#{@user[0]['id']}",
+                              status: 'pending review')
       booking = Booking.find(result.property_id)
       expect(booking.first.start_date).to eq '2021-10-10'
       expect(booking.first.end_date).to eq '2021-10-14'
@@ -54,8 +65,11 @@ describe Booking do
 
   describe '#update_status' do
     it 'changes status of booking from pending review to Booking confirmed' do
-      result = Booking.create('2021-10-10', '2021-10-14', "#{@property[0]['id']}", "#{@user[0]['id']}",
-                              'pending review')
+      result = Booking.create(start_date: '2021-10-10',
+                              end_date: '2021-10-14', 
+                              property_id: "#{@property[0]['id']}", 
+                              renter_id: "#{@user[0]['id']}",
+                              status: 'pending review')
       Booking.update_status(result.id)
       updated_result = Booking.find(@property[0]['id'])
       expect(updated_result.first.status).to eq 'Booking confirmed'

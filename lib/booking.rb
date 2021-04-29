@@ -24,7 +24,7 @@ class Booking
     end
   end
 
-  def self.create(start_date, end_date, property_id, renter_id, status)
+  def self.create(start_date:, end_date:, property_id:, renter_id:, status:)
     booking = DatabaseConnection.query("INSERT INTO bookings (start_date, end_date, property_id, renter_id, status)
       VALUES ('#{start_date}', '#{end_date}', '#{property_id}', '#{renter_id}', '#{status}')
       RETURNING id, start_date, end_date, property_id, renter_id, status;")
