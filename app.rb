@@ -81,7 +81,7 @@ class Airbnb < Sinatra::Base
     if property
       flash[:success] = 'You have successfully created a listing'
     else
-      flash[:danger] = 'Something went wrong'
+      flash[:error] = 'Something went wrong'
     end
     redirect '/homepage'
   end
