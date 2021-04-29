@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to AirBnb</title>
+</head>
+<body>
+  <h1>Welcome to AirBnb</h1>
+  
+        <div data-alert class="flash confirm alert-box radius">
+            Welcome test name! Account has been created!
+            <a href="/" class="close">&times;</a>
+        </div>
+  
+  <h3>Please sign in or sign up</h3>
+  <form action="/user/new">
+    <input type="submit" value="Sign up">
+  </form>
+  <form action="/session/new" method="post">
+  <label for="email">Email:
+      <input type="text" name='email' placeholder='Enter email'>
+    </label>
+    <label for="password">Password:
+      <input type="text" name='password' placeholder='Enter password'>
+    </label>
+    <input type="submit" value="Log in">
+  </form>
+</body>
+</html>

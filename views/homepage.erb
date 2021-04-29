@@ -21,10 +21,22 @@
   <form action="/property/new" method="get">
     <button type="submit"> List a property </button>
   </form>
+
   <% @properties.each do |property| %>
     <%= property.title%>
     <%= "Property area: #{property.postcode} Property details #{property.description} "%>
     <br>
+    <form action="/property/<%= property.id %>/request" method="post">
+      <button type="submit"> Rent Property </button>
+    </form>
   <% end %>
+  <% if @messages %>
+    <% @messages.each do |message| %>
+      <%= "Someone has requested #{@property.title} "%>
+      <form action="/property/<%= property.id %>/confirm" method="post">
+      <button type="submit"> Rent Property </button>
+    </form>
+    <% end%>
+  <% end%>
 </body>
 </html>

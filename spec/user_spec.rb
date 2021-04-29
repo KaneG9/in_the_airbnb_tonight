@@ -12,6 +12,13 @@ describe User do
       expect(user.first.name).to eq 'test name'
       expect(user.length).to eq 10
     end
+
+    it 'can return the user id' do
+      User.create('test name', 'test@email.com', 'password1234')
+      user = User.all
+
+      expect(user.first.id).not_to be_nil
+    end
   end
 
   describe '#create' do
@@ -30,12 +37,13 @@ describe User do
 
   describe '#find method' do
     it 'can find user from database' do
-      User.create('Tiffany', 'tiffany@email.com', 'tiff123')
-      user = User.find('tiffany@email.com')
-      expect(user.name).to eq 'Tiffany'
+      user = User.create('Tiffany', 'tiffany@email.com', 'tiff123')
+      find = User.find(user.id)
+      expect(find.name).to eq 'Tiffany'
     end
+
     it 'returns nil if no matches found' do
-      expect(User.find('tiffany@email.com')).to eq nil
+      expect(User.find(nil)).to eq nil
     end
   end
 

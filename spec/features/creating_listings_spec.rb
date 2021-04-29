@@ -2,7 +2,8 @@
 
 feature 'Creating listings on homepage' do
   scenario 'User can list their property' do
-    # sign_in_helper
+    sign_up
+    sign_in
     visit '/homepage'
     create_test_property
 

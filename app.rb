@@ -30,7 +30,7 @@ class Airbnb < Sinatra::Base
   end
 
   post '/user/new' do
-    if User.find(params[:email])
+    if User.find(session[:user_id])
       flash[:error] = 'User already exists, please log in!'
     else
       user = User.create(params[:name], params[:email], params[:password])
@@ -69,9 +69,13 @@ class Airbnb < Sinatra::Base
     erb(:"property/new")
   end
 
-  post '/property/new' do
-    property = Property.create(address: params[:address], postcode: params[:postcode], title: params[:title],
-                               description: params[:description], price_per_day: params[:price_per_day])
+  post '/property/:id/new' do
+    property = Property.create(address: params[:address],
+                               postcode: params[:postcode],
+                               title: params[:title],
+                               description: params[:description],
+                               user_id: params[:id],
+                               price_per_day: params[:price_per_day])
     if property
       flash[:success] = 'You have successfully created a listing'
     else
@@ -86,10 +90,27 @@ class Airbnb < Sinatra::Base
     erb :'property/id'
   end
 
+
+  get '/property/:id/confirm' do
+    # accept message method flips @message.read field to true, stops rendering
+  end
+
+
+  post '/property/:id/confirm' do
+#     if message
+#       flash[:success] = 'You have successfully requested to rent'
+#     else
+#       flash[:danger] = 'There was a problem with your requested propery'
+#     end
+#     redirect '/homepage'
+  end
+
   post '/property/:id' do
     if Date.parse(params[:start_date]) < Date.today
       flash[:error] = 'The date you have requested is in the past, Please try again.'
     else
+      property = Property.find(params[:id])
+      message = Message.create(property_owner_id: property.user_id, property_id: params[:id], renter_id: @user.id)
       booking = Booking.create(params[:start_date],
                                params[:end_date],
                                params[:id],
@@ -99,4 +120,5 @@ class Airbnb < Sinatra::Base
     end
     redirect "/property/#{params[:id]}"
   end
+  
 end
