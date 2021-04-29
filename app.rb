@@ -42,7 +42,7 @@ class Airbnb < Sinatra::Base
 
   get '/homepage' do
     @properties = Property.all
-    @messages = Message.join_properties(property_owner_id: @user.id)
+    @request_messages = Message.join_properties(property_owner_id: @user.id)
     erb :homepage
   end
 
