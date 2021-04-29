@@ -50,4 +50,5 @@ feature 'booking a property' do
     click_button 'Request rental'
     expect(page.body.index('2022-02-01')).to be < page.body.index('2022-03-01')
   end
+  
 end
