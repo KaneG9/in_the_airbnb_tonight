@@ -38,10 +38,43 @@ feature 'Renting a property' do
 
     # ------OWNER CHECKS MESSAGES-----
     sign_in
-
-    # expect(page).not_to have_content 'error'
     expect(page).to have_content 'A very real place you can visit'
     expect(page).to have_content 'Request'
     expect(page).to have_button 'Confirm request'
+  end
+
+  scenario 'Renter receives message upon approval' do
+    sign_up
+    sign_in
+    create_test_property
+    click_button 'Logout'
+
+    click_button 'Sign up'
+    fill_in('name', with: 'requester name')
+    fill_in('email', with: 'requester@email.com')
+    fill_in('password', with: 'test_password2')
+    click_button 'Submit'
+
+    fill_in('email', with: 'requester@email.com')
+    fill_in('password', with: 'test_password2')
+    click_button 'Log in'
+
+    click_button 'View Property'
+    fill_in 'start_date', with: '2025-02-01'
+    fill_in 'end_date', with: '2025-02-08'
+    click_button 'Request rental'
+    click_button 'Logout'
+    
+    sign_in
+    click_button 'Confirm request'
+    click_button 'Logout'
+
+    fill_in('email', with: 'requester@email.com')
+    fill_in('password', with: 'test_password2')
+    click_button 'Log in'
+
+    expect(page).to have_content('Your request has been approved')
+    expect(page).to have_button('Clear message and view property')
+    expect(page).not_to have_content('New Request')
   end
 end

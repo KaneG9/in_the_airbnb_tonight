@@ -6,7 +6,6 @@ feature 'View properties on homepage' do
     sign_in
     visit '/homepage'
     create_test_property
-
     expect(page).to have_content 'E19 4RH'
   end
 end

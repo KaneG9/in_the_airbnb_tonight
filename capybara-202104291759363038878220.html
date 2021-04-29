@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to AirBnb</title>
+</head>
+<body>
+  <h1>Welcome to MakersBnB </h1>
+  <h2> Here are the available listings: </h2>
+        <div data-alert class="flash confirm alert-box radius">
+            Welcome requester name! Successfully logged in!
+            <a href="/homepage" class="close">&times;</a>
+        </div>
+  <form action="/session/destroy" method='post'>
+    <input type="submit" value='Logout'>
+  </form>
+  <form action="/property/new" method="get">
+    <button type="submit"> List a property </button>
+  </form>
+
+    A very real place you can visit
+    Property area: E19 4RH Property details A really tiny and awful apartment with terrible views of the back of a bigger building 
+    <br>
+    <form action="/property/260" method="get">
+      <button type="submit"> View Property </button>
+    </form>
+  
+</body>
+</html>
