@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/database_connection'
 
 def setup_test_environment
@@ -6,9 +8,4 @@ def setup_test_environment
   else
     DatabaseConnection.setup('airbnb')
   end
-end
-
-def clear_test_database
-  DatabaseConnection.setup('airbnb_test')
-  DatabaseConnection.query('TRUNCATE TABLE properties')
 end

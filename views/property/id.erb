@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viewing Propetry in <%= @property.postcode %></title> 
+</head>
+<body>
+  <form action="/session/destroy" method='post'>
+    <input type="submit" value='Logout'>
+  </form>
+  <form action="/homepage" method='get'>
+    <input type="submit" value='Homepage'>
+  </form>
+  <h1> <%= @property.title%> </h1>
+  <p>
+    <%= @property.description%>
+    <br>
+    £<%= @property.price_per_day%> per day
+  </p>
+  <% flash.keys.each do |type| %>
+        <div data-alert class="flash <%= type %> alert-box radius">
+            <%= flash[type] %>
+            <a href="/property/<%= @property.id %>" class="close">&times;</a>
+        </div>
+  <% end %>
+  <form action="/property/<%= @property.id %>" method='post'>
+    <label for="start_date">Start Date:
+      <input type="date" id="start_date" name="start_date">
+    </label>
+    <label for="end_date">End Date:
+      <input type="date" id="end_date" name="end_date">
+    </label>
+    <input type="submit" value='Request rental'>
+  </form>
+  <br>
+  <table style="width:50%" id='bookings_table'>
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Booking Status</th>
+    </tr>
+    <% if @bookings != nil %>
+      <% @bookings.each do |booking|%>
+        <tr>
+          <td><%=booking.start_date%></td>
+          <td><%=booking.end_date%></td>
+          <td><%=booking.status%></td>
+        </tr>
+      <%end%>
+    <%end%>
+  </table>
+</body>
+</html>

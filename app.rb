@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 require 'sinatra'
@@ -8,7 +7,7 @@ require 'sinatra/flash'
 require_relative './lib/property'
 require_relative './lib/user'
 require './database_connection_setup'
-
+require './lib/booking'
 
 class Airbnb < Sinatra::Base
   configure :development do
@@ -17,7 +16,10 @@ class Airbnb < Sinatra::Base
   end
 
   enable :sessions, :method_override
-  
+
+  before do
+    @user = User.find(session[:user_id])
+  end
 
   get '/' do
     erb :index
@@ -48,7 +50,7 @@ class Airbnb < Sinatra::Base
   post '/session/new' do
     user = User.authenticate(params[:email], params[:password])
     if user
-      session[:user] = user
+      session[:user_id] = user.id
       flash[:confirm] = "Welcome #{user.name}! Successfully logged in!"
       redirect '/homepage'
     else
@@ -58,7 +60,7 @@ class Airbnb < Sinatra::Base
   end
 
   post '/session/destroy' do
-    session[:user] = nil
+    session[:user_id] = nil
     flash[:confirm] = 'Successful log out'
     redirect '/'
   end
@@ -68,21 +70,33 @@ class Airbnb < Sinatra::Base
   end
 
   post '/property/new' do
-    property = Property.create(address: params[:address], postcode: params[:postcode], title: params[:title], description: params[:description], price_per_day: params[:price_per_day])
+    property = Property.create(address: params[:address], postcode: params[:postcode], title: params[:title],
+                               description: params[:description], price_per_day: params[:price_per_day])
     if property
       flash[:success] = 'You have successfully created a listing'
     else
       flash[:danger] = 'Something went wrong'
     end
-    redirect '/homepage' 
+    redirect '/homepage'
   end
 
   get '/property/:id' do
+    @property = Property.find(params['id'])
+    @bookings = Booking.find(params['id'])
+    erb :'property/id'
   end
 
-  get '/property/:id/confirm' do
-  end
-
-  get '/property/:id/request' do
+  post '/property/:id' do
+    if Date.parse(params[:start_date]) < Date.today
+      flash[:error] = 'The date you have requested is in the past, Please try again.'
+    else
+      booking = Booking.create(params[:start_date],
+                               params[:end_date],
+                               params[:id],
+                               session[:user_id],
+                               'pending review')
+      flash[:confirm] = 'Your rental request has been sent.'
+    end
+    redirect "/property/#{params[:id]}"
   end
 end

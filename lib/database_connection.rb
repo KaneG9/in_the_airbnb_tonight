@@ -15,4 +15,3 @@ class DatabaseConnection
     @connection.exec(sql)
   end
 end
-
