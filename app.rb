@@ -98,7 +98,7 @@ class Airbnb < Sinatra::Base
 
   post '/property/:id/request' do
     property = Property.find(params[:id])
-    message = Message.create(property_owner_id: property.user_id, property_id: params[:id])
+    message = Message.create(property_owner_id: property.user_id, property_id: params[:id], renter_id: @user.id)
     if message
       flash[:success] = 'You have successfully requested to rent'
     else

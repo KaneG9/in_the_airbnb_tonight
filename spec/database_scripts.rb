@@ -7,8 +7,3 @@ def setup_test_environment
     DatabaseConnection.setup('airbnb')
   end
 end
-
-def clear_test_database
-  DatabaseConnection.setup('airbnb_test')
-  DatabaseConnection.query('TRUNCATE TABLE properties')
-end

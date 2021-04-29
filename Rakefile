@@ -19,16 +19,20 @@ task :setup do
       postcode VARCHAR(10),
       title VARCHAR (60),
       description VARCHAR (240),
-      user_id INT,
+      user_id INT UNIQUE,
       FOREIGN KEY (user_id) REFERENCES users (id),
       price_per_day INT
     );")
 
-    #-----CREATE MESSAGES TABLE------
-    # https://www.enterprisedb.com/postgres-tutorials/using-select-query-data-single-table-and-multiple-tables
-    # 
-    # connection.exec("CREATE TABLE messages (id SERIAL PRIMARY KEY,
-    #   HAVE COLUMN READ, TRUE/ FALSE, ACCEPT METHOD SETS TO TRUE
-    # );")
+    connection.exec("CREATE TABLE messages (id SERIAL PRIMARY KEY,
+      property_owner_id INT,
+      FOREIGN KEY (property_owner_id) REFERENCES properties (user_id),
+      property_id INT,
+      FOREIGN KEY (property_id) REFERENCES properties (id),
+      renter_id INT,
+      FOREIGN KEY (renter_id) REFERENCES users (id),
+      read BOOLEAN NOT NULL DEFAULT false
+    );")
   end
 end
+

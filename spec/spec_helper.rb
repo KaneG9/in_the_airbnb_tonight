@@ -18,7 +18,7 @@ Capybara.app = Airbnb
 RSpec.configure do |config|
   config.before(:each) do
     conn = PG.connect(dbname: 'airbnb_test')
-    conn.exec('TRUNCATE TABLE users, properties;') #CHECK WORKS
+    conn.exec('TRUNCATE TABLE messages, users, properties;') #CHECK WORKS
   end
 
   config.expect_with :rspec do |expectations|

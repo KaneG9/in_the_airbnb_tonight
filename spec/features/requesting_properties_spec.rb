@@ -21,13 +21,13 @@ feature 'Renting a property' do
   #  -----RENTER LOGIN & REQUEST-----
     visit '/'
     click_button 'Sign up'
-    fill_in('name', with: 'renter name')
-    fill_in('email', with: 'renter@email.com')
-    fill_in('password', with: 'test_password1')
+    fill_in('name', with: 'requester name')
+    fill_in('email', with: 'requester@email.com')
+    fill_in('password', with: 'test_password2')
     click_button 'Submit'
     
-    fill_in('email', with: 'renter@email.com')
-    fill_in('password', with: 'test_password1')
+    fill_in('email', with: 'requester@email.com')
+    fill_in('password', with: 'test_password2')
     click_button 'Log in'  
 
     click_button 'Rent Property'
