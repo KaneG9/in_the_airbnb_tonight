@@ -19,14 +19,13 @@ task :setup do
       postcode VARCHAR(10),
       title VARCHAR (60),
       description VARCHAR (240),
-      user_id INT UNIQUE,
-      FOREIGN KEY (user_id) REFERENCES users (id),
+      user_id INT,
       price_per_day INT
     );")
 
     connection.exec("CREATE TABLE messages (id SERIAL PRIMARY KEY,
       property_owner_id INT,
-      FOREIGN KEY (property_owner_id) REFERENCES properties (user_id),
+      FOREIGN KEY (property_owner_id) REFERENCES users (id),
       property_id INT,
       FOREIGN KEY (property_id) REFERENCES properties (id),
       renter_id INT,

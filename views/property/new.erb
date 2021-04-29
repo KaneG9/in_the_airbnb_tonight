@@ -17,7 +17,8 @@
     <input type="submit" value='Homepage'>
   </form>
   Please give us your property details
-  <form action="/property/<%= @user.id %>/new" method="post">
+  <form action="/property/new" method="post">
+    <input type="hidden" name="user_id" id="user_id" value="<%= @user.id %>">
     <label for="title">Title:
       <input type="text" name="title" placeholder="Give your listing a name">
     </label>
@@ -28,8 +29,7 @@
       <input type="text" name="postcode" placeholder="Postcode">
     </label>
     <label for="description">Description:
-      <textarea id="description" name="description" rows="5" cols="20">
-      Tell us about what makes your property special
+      <textarea id="description" name="description" rows="5" cols="20" placeholder="Tell us about what makes your property special">
       </textarea>
     </label>
     <label for="number">Price:

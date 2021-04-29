@@ -8,6 +8,7 @@ require_relative './lib/property'
 require_relative './lib/user'
 require './database_connection_setup'
 require './lib/booking'
+require './lib/message'
 
 class Airbnb < Sinatra::Base
   configure :development do
@@ -69,12 +70,12 @@ class Airbnb < Sinatra::Base
     erb(:"property/new")
   end
 
-  post '/property/:id/new' do
+  post '/property/new' do
     property = Property.create(address: params[:address],
                                postcode: params[:postcode],
                                title: params[:title],
                                description: params[:description],
-                               user_id: params[:id],
+                               user_id: params[:user_id],
                                price_per_day: params[:price_per_day])
     if property
       flash[:success] = 'You have successfully created a listing'

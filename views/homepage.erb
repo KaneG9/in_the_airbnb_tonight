@@ -26,8 +26,8 @@
     <%= property.title%>
     <%= "Property area: #{property.postcode} Property details #{property.description} "%>
     <br>
-    <form action="/property/<%= property.id %>/request" method="post">
-      <button type="submit"> Rent Property </button>
+    <form action="/property/<%= property.id %>" method="get">
+      <button type="submit"> View Property </button>
     </form>
   <% end %>
   <% if @messages %>

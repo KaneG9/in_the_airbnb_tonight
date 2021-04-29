@@ -3,13 +3,18 @@
 require_relative '../web_helpers'
 
 feature 'booking a property' do
+  before(:each) do
+    @u = User.create('test name', 'test@email.com', 'test_password1')
+  end
+
   scenario 'Users can book a property' do
-    sign_up
+    visit '/'
     sign_in
     p = Property.create(address: 'test_address',
                         postcode: 'test',
                         title: 'test_title',
                         description: 'test_description',
+                        user_id: @u.id,
                         price_per_day: 1)
     visit "/property/#{p.id}"
     fill_in 'start_date', with: '2022-02-01'
@@ -19,12 +24,13 @@ feature 'booking a property' do
   end
 
   scenario 'Users can see booking request that have been made for  a property' do
-    sign_up
+    visit '/'
     sign_in
     p = Property.create(address: 'test_address',
                         postcode: 'test',
                         title: 'test_title',
                         description: 'test_description',
+                        user_id: @u.id,
                         price_per_day: 1)
     visit "/property/#{p.id}"
     fill_in 'start_date', with: '2022-02-01'
@@ -36,12 +42,13 @@ feature 'booking a property' do
   end
 
   scenario 'Booking request are displayed with most recent first' do
-    sign_up
+    visit '/'
     sign_in
     p = Property.create(address: 'test_address',
                         postcode: 'test',
                         title: 'test_title',
                         description: 'test_description',
+                        user_id: @u.id,
                         price_per_day: 1)
     visit "/property/#{p.id}"
     fill_in 'start_date', with: '2022-02-01'
@@ -54,12 +61,13 @@ feature 'booking a property' do
   end
 
   scenario 'Booking in past show error' do
-    sign_up
+    visit '/'
     sign_in
     p = Property.create(address: 'test_address',
                         postcode: 'test',
                         title: 'test_title',
                         description: 'test_description',
+                        user_id: @u.id,
                         price_per_day: 1)
     visit "/property/#{p.id}"
     fill_in 'start_date', with: '2021-02-01'
