@@ -13,11 +13,11 @@ describe Message do
                                  description: 'generic property info',
                                  user_id: owner.id,
                                  price_per_day: 100)
-
       message = Message.create(sender_id: property.user_id,
                                property_id: property.id,
-                               receiver_id: receiver.id)
-
+                               receiver_id: receiver.id,
+                               confirmed: false,
+                               booking_id: 1)
       expect(message.sender_id).to eq property.user_id
       expect(message.property_id).to eq property.id
     end
@@ -35,7 +35,9 @@ describe Message do
                                    price_per_day: 100)
       message = Message.create(sender_id: property_1.user_id,
                                property_id: property_1.id,
-                               receiver_id: receiver.id)
+                               receiver_id: receiver.id,
+                               confirmed: false,
+                               booking_id: 1)
       messages = Message.all(id: property_1.user_id)
 
       expect(messages.size).to eq 1
@@ -58,7 +60,9 @@ describe Message do
                                    price_per_day: 100)
       message = Message.create(sender_id: renter.id,
                                property_id: property_1.id,
-                               receiver_id: property_1.user_id)
+                               receiver_id: property_1.user_id,
+                               confirmed: false,
+                               booking_id: 1)
 
       messages = Message.find_rental_requests(receiver_id: property_1.user_id)
       expect(messages.size).to eq 1
@@ -80,9 +84,16 @@ describe Message do
                                    description: 'generic property info',
                                    user_id: owner.id,
                                    price_per_day: 100)
+      false_message = Message.create(sender_id: property_1.user_id,
+                              property_id: property_1.id,
+                              receiver_id: renter.id,
+                              confirmed: false,
+                              booking_id: 1)
       message = Message.create(sender_id: property_1.user_id,
                                property_id: property_1.id,
-                               receiver_id: renter.id)
+                               receiver_id: renter.id,
+                               confirmed: true,
+                               booking_id: 1)
 
       messages = Message.confirmed_messages(receiver_id: renter.id)
       expect(messages.size).to eq 1

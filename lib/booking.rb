@@ -52,4 +52,10 @@ class Booking
                   status: booking['status'])
     end
   end
+
+  def self.update_status(id)
+    DatabaseConnection.query("UPDATE bookings
+      SET status = 'Booking confirmed'
+      WHERE id = #{id};")
+  end
 end

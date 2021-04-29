@@ -51,4 +51,14 @@ describe Booking do
       expect(Booking.find(200)).to eq nil
     end
   end
+
+  describe '#update_status' do
+    it 'changes status of booking from pending review to Booking confirmed' do
+      result = Booking.create('2021-10-10', '2021-10-14', "#{@property[0]['id']}", "#{@user[0]['id']}",
+                              'pending review')
+      Booking.update_status(result.id)
+      updated_result = Booking.find(@property[0]['id'])
+      expect(updated_result.first.status).to eq 'Booking confirmed'
+    end
+  end
 end

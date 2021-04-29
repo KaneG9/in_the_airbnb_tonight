@@ -95,31 +95,37 @@ class Airbnb < Sinatra::Base
     redirect "/property/#{params[:id]}"
   end
 
-
-  post '/property/:id/confirm' do
-    Message.read(params[:message_id])
-    Message.create(sender_id: @user.id, 
-                  property_id: params[:id], 
-                  receiver_id: params[:sender_id])
-    #booking status updated to confirmed
-    redirect '/homepage'
-  end
-
   post '/property/:id' do
     if Date.parse(params[:start_date]) < Date.today
       flash[:error] = 'The date you have requested is in the past, Please try again.'
     else
       property = Property.find(params[:id])
-      message = Message.create(sender_id: @user.id, 
-                              property_id: params[:id], 
-                              receiver_id: property.user_id)
       booking = Booking.create(params[:start_date],
                                params[:end_date],
                                params[:id],
                                session[:user_id],
                                'pending review')
+      message = Message.create(sender_id: @user.id, 
+                              property_id: params[:id], 
+                              receiver_id: property.user_id,
+                              confirmed: false,
+                              booking_id: booking.id)
       flash[:confirm] = 'Your rental request has been sent.'
     end
     redirect "/property/#{params[:id]}"
   end
+
+  post '/property/:id/confirm' do
+    Message.read(params[:message_id])
+    Message.create(sender_id: @user.id, 
+                  property_id: params[:id], 
+                  receiver_id: params[:sender_id],
+                  confirmed: true,
+                  booking_id: params[:booking_id])
+    Booking.update_status(params[:booking_id])
+    #booking status updated to confirmed
+    redirect '/homepage'
+  end
+
+  
 end
