@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'booking'
 require 'database_connection'
 
@@ -6,14 +8,14 @@ describe Booking do
     @user = DatabaseConnection.query("INSERT INTO users(email, name, password)
       VALUES('test@email.com', 'test name', 'password') RETURNING id, name, email;")
     @property = DatabaseConnection.query("INSERT INTO properties (address, postcode, title, description, price_per_day)
-                                      VALUES('test address', 'test', 'testing title', 'test description', '1') 
+                                      VALUES('test address', 'test', 'testing title', 'test description', '1')
                                        RETURNING id, postcode, title, description, price_per_day;")
   end
 
   describe '#all method' do
-    it "can show all bookings" do
-      Booking.create('2021-10-10', '2021-10-14', "#{@property[0]['id']}", "#{@user[0]['id']}", 'pending review')
-      booking = Booking.all 
+    it 'can show all bookings' do
+      Booking.create('2021-10-10', '2021-10-14', (@property[0]['id']).to_s, (@user[0]['id']).to_s, 'pending review')
+      booking = Booking.all
       expect(booking.first.start_date).to eq '2021-10-10'
       expect(booking.first.end_date).to eq '2021-10-14'
       expect(booking.first.property_id).to eq @property[0]['id']
@@ -22,10 +24,10 @@ describe Booking do
     end
   end
 
-  describe '#create' do 
+  describe '#create' do
     it 'can add a booking to db' do
-      Booking.create('2021-10-10', '2021-10-14', "#{@property[0]['id']}", "#{@user[0]['id']}", 'pending review')
-      booking = Booking.all 
+      Booking.create('2021-10-10', '2021-10-14', (@property[0]['id']).to_s, (@user[0]['id']).to_s, 'pending review')
+      booking = Booking.all
       expect(booking.first.start_date).to eq '2021-10-10'
       expect(booking.first.end_date).to eq '2021-10-14'
       expect(booking.first.property_id).to eq @property[0]['id']
@@ -36,7 +38,8 @@ describe Booking do
 
   describe '#find' do
     it 'can find the booking details from the id' do
-      result = Booking.create('2021-10-10', '2021-10-14', "#{@property[0]['id']}", "#{@user[0]['id']}", 'pending review')
+      result = Booking.create('2021-10-10', '2021-10-14', (@property[0]['id']).to_s, (@user[0]['id']).to_s,
+                              'pending review')
       booking = Booking.find(result.property_id)
       expect(booking.first.start_date).to eq '2021-10-10'
       expect(booking.first.end_date).to eq '2021-10-14'
@@ -48,5 +51,4 @@ describe Booking do
       expect(Booking.find(200)).to eq nil
     end
   end
-
 end

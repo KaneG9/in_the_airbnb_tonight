@@ -25,5 +25,4 @@ feature 'signing up' do
     fill_in('password', with: 'test_password1')
     expect(page).not_to have_content 'test_password1'
   end
-  
 end

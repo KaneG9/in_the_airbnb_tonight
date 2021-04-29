@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 require 'sinatra'
@@ -10,7 +9,6 @@ require_relative './lib/user'
 require './database_connection_setup'
 require './lib/booking'
 
-
 class Airbnb < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
@@ -18,8 +16,8 @@ class Airbnb < Sinatra::Base
   end
 
   enable :sessions, :method_override
-  
-  before do 
+
+  before do
     @user = User.find(session[:user_id])
   end
 
@@ -72,13 +70,14 @@ class Airbnb < Sinatra::Base
   end
 
   post '/property/new' do
-    property = Property.create(address: params[:address], postcode: params[:postcode], title: params[:title], description: params[:description], price_per_day: params[:price_per_day])
+    property = Property.create(address: params[:address], postcode: params[:postcode], title: params[:title],
+                               description: params[:description], price_per_day: params[:price_per_day])
     if property
       flash[:success] = 'You have successfully created a listing'
     else
       flash[:danger] = 'Something went wrong'
     end
-    redirect '/homepage' 
+    redirect '/homepage'
   end
 
   get '/property/:id' do
@@ -92,10 +91,10 @@ class Airbnb < Sinatra::Base
       flash[:error] = 'The date you have requested is in the past, Please try again.'
     else
       booking = Booking.create(params[:start_date],
-        params[:end_date], 
-        params[:id],
-        session[:user_id],
-        "pending review")
+                               params[:end_date],
+                               params[:id],
+                               session[:user_id],
+                               'pending review')
       flash[:confirm] = 'Your rental request has been sent.'
     end
     redirect "/property/#{params[:id]}"

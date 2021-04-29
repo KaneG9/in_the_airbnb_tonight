@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'View properties on homepage' do
   scenario 'User can see a listed property' do
     # sign_in_helper
@@ -6,5 +8,4 @@ feature 'View properties on homepage' do
 
     expect(page).to have_content 'E19 4RH'
   end
-
 end
