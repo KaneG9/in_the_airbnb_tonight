@@ -88,8 +88,8 @@ class Airbnb < Sinatra::Base
   end
 
   post '/property/:id' do
-    booking = Booking.create("#{params[:start_year]}-#{params[:start_month]}-#{params[:start_day]}",
-       "#{params[:end_year]}-#{params[:end_month]}-#{params[:end_day]}", 
+    booking = Booking.create(params[:start_date],
+       params[:end_date], 
        params[:id],
        session[:user_id],
        "pending review")

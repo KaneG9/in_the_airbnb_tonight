@@ -26,70 +26,13 @@
         </div>
   <% end %>
   <form action="/property/<%= @property.id %>" method='post'>
-    <label for="start_day">Start day:
-      <select name="start_day" id="start_day">
-        <% (1..31).each do |day| %>
-            <option value="<%= day %>"><%= day %></option>
-        <% end %>
-      </select>
+    <label for="start_date">Start Date:
+      <input type="date" id="start_date" name="start_date">
     </label>
-    <label for="start_month">Start month:
-      <select name="start_month" id="start_month">
-        <option value="1"> January </option>
-        <option value="2"> February </option>
-        <option value="3"> March </option>
-        <option value="4"> April </option>
-        <option value="5"> May </option>
-        <option value="6"> June </option>
-        <option value="7"> July </option>
-        <option value="8"> August </option>
-        <option value="9"> September </option>
-        <option value="10"> October </option>
-        <option value="11"> November </option>
-        <option value="12"> December </option>
-      </select> 
+    <label for="end_date">End Date:
+      <input type="date" id="end_date" name="end_date">
     </label>
-    <label for="start_year">Start year:
-      <select name="start_year" id="start_year">
-        <option value="2021"> 2021 </option>
-        <option value="2022"> 2022 </option>
-        <option value="2023"> 2023 </option>
-        <option value="2024"> 2024 </option>
-      </select> 
-    </label>
-    <label for="end_day">End day:
-      <select name="end_day" id='end_day'>
-        <% (1..31).each do |day| %>
-            <option value="<%= day %>"><%= day %></option>
-        <% end %>
-      </select>
-    </label>
-    <label for="end_month">End month:
-      <select name="end_month" id="end_month">
-        <option value="1"> January </option>
-        <option value="2"> February </option>
-        <option value="3"> March </option>
-        <option value="4"> April </option>
-        <option value="5"> May </option>
-        <option value="6"> June </option>
-        <option value="7"> July </option>
-        <option value="8"> August </option>
-        <option value="9"> September </option>
-        <option value="10"> October </option>
-        <option value="11"> November </option>
-        <option value="12"> December </option>
-      </select> 
-    </label>
-    <label for="end_year">End year:
-      <select name="end_year" id="end_year">
-        <option value="2021"> 2021 </option>
-        <option value="2022"> 2022 </option>
-        <option value="2023"> 2023 </option>
-        <option value="2024"> 2024 </option>
-      </select> 
-    </label>
-    <br>
-    <input type="submit" value="Request rental">
+    <input type="submit" value='Request rental'>
   </form>
   <br>
   <table style="width:50%" id='bookings_table'>

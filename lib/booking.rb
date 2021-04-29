@@ -36,7 +36,10 @@ class Booking
   end
 
   def self.find(property_id)
-    result = DatabaseConnection.query("SELECT * FROM bookings WHERE property_id = #{property_id};")
+    result = DatabaseConnection.query("SELECT * 
+      FROM bookings 
+      WHERE property_id = #{property_id} AND start_date >= DATE(NOW())
+      ORDER BY start_date ASC;")
     return unless result.any?
     result.map do |booking|
       Booking.new(id: booking['id'], 

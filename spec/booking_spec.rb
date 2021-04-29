@@ -35,7 +35,7 @@ describe Booking do
   end
 
   describe '#find' do
-    it 'can find the property details from the id' do
+    it 'can find the booking details from the id' do
       result = Booking.create('2021-10-10', '2021-10-14', "#{@property[0]['id']}", "#{@user[0]['id']}", 'pending review')
       booking = Booking.find(result.property_id)
       expect(booking.first.start_date).to eq '2021-10-10'
