@@ -33,5 +33,15 @@ task :setup do
       FOREIGN KEY (renter_id) REFERENCES users (id),
       read BOOLEAN NOT NULL DEFAULT false
     );")
+
+    connection.exec("CREATE TABLE bookings (id SERIAL PRIMARY KEY,
+      start_date DATE,
+      end_date DATE,
+      property_id INT,
+      FOREIGN KEY (property_id) REFERENCES properties (id),
+      renter_id INT,
+      FOREIGN KEY (renter_id) REFERENCES users (id),
+      status VARCHAR(70)
+    );")
   end
 end

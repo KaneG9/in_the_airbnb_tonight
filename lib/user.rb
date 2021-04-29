@@ -2,7 +2,6 @@
 
 require 'pg'
 require 'bcrypt'
-require './database_connection_setup'
 
 class User
   attr_reader :id, :name, :email
@@ -24,6 +23,7 @@ class User
     encrypted_password = BCrypt::Password.create(password)
     result = DatabaseConnection.query("INSERT INTO users(email, name, password)
     VALUES('#{email}', '#{name}', '#{encrypted_password}') RETURNING id, name, email;")
+    
     User.new(id: result[0]['id'], name: result[0]['name'], email: result[0]['email'])
   end
 

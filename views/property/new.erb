@@ -13,6 +13,9 @@
     <a href="/homepage" class="close">&times;</a>
   </div>
 <% end %>
+  <form action="/homepage" method='get'>
+    <input type="submit" value='Homepage'>
+  </form>
   Please give us your property details
   <form action="/property/<%= @user.id %>/new" method="post">
     <label for="title">Title:

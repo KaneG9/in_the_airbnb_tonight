@@ -6,6 +6,8 @@ require 'pg'
 require 'sinatra/flash'
 require_relative './lib/property'
 require_relative './lib/user'
+require './database_connection_setup'
+require './lib/booking'
 
 class Airbnb < Sinatra::Base
   configure :development do
@@ -18,8 +20,6 @@ class Airbnb < Sinatra::Base
   before do
     @user = User.find(session[:user_id])
   end
-
-  # MAKE SURE GET AND POST ARE RIGHT
 
   get '/' do
     erb :index
@@ -60,7 +60,7 @@ class Airbnb < Sinatra::Base
   end
 
   post '/session/destroy' do
-    session[:user] = nil
+    session[:user_id] = nil
     flash[:confirm] = 'Successful log out'
     redirect '/'
   end
@@ -85,23 +85,40 @@ class Airbnb < Sinatra::Base
   end
 
   get '/property/:id' do
+    @property = Property.find(params['id'])
+    @bookings = Booking.find(params['id'])
+    erb :'property/id'
   end
+
 
   get '/property/:id/confirm' do
     # accept message method flips @message.read field to true, stops rendering
   end
 
-  # get '/property/:id/request' do
-  # end
 
-  post '/property/:id/request' do
-    property = Property.find(params[:id])
-    message = Message.create(property_owner_id: property.user_id, property_id: params[:id], renter_id: @user.id)
-    if message
-      flash[:success] = 'You have successfully requested to rent'
-    else
-      flash[:danger] = 'There was a problem with your requested propery'
-    end
-    redirect '/homepage'
+  post '/property/:id/confirm' do
+#     if message
+#       flash[:success] = 'You have successfully requested to rent'
+#     else
+#       flash[:danger] = 'There was a problem with your requested propery'
+#     end
+#     redirect '/homepage'
   end
+
+  post '/property/:id' do
+    if Date.parse(params[:start_date]) < Date.today
+      flash[:error] = 'The date you have requested is in the past, Please try again.'
+    else
+      property = Property.find(params[:id])
+      message = Message.create(property_owner_id: property.user_id, property_id: params[:id], renter_id: @user.id)
+      booking = Booking.create(params[:start_date],
+                               params[:end_date],
+                               params[:id],
+                               session[:user_id],
+                               'pending review')
+      flash[:confirm] = 'Your rental request has been sent.'
+    end
+    redirect "/property/#{params[:id]}"
+  end
+  
 end

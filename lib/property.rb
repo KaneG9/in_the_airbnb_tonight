@@ -3,6 +3,7 @@
 require_relative 'database_connection'
 
 class Property
+
   attr_reader :id, :postcode, :title, :description, :user_id, :price_per_day
 
   def initialize(id:, postcode:, title:, description:, user_id:, price_per_day:)
@@ -13,8 +14,6 @@ class Property
     @user_id = user_id
     @price_per_day = price_per_day
   end
-
-  # do the database stuff boyo
 
   def self.create(address:, postcode:, title:, description:, user_id:, price_per_day:)
     result = DatabaseConnection.query("INSERT INTO properties (address, postcode, title, description, user_id, price_per_day)
@@ -42,10 +41,8 @@ class Property
   end
 
   def self.find(id)
-    return nil unless id
-
+    return unless id
     result = DatabaseConnection.query("SELECT * FROM properties WHERE id = '#{id}';")
-
     Property.new(id: result[0]['id'],
                  postcode: result[0]['postcode'],
                  title: result[0]['title'],

@@ -7,6 +7,9 @@
   <title>Sign Up</title>
 </head>
 <body>
+  <form action="/homepage" method='get'>
+    <input type="submit" value='Homepage'>
+  </form>
   <h3>Please fill in your details below</h3>
   <form action="/user/new" method='post'>
     <label for="name">Name:
@@ -16,7 +19,18 @@
       <input type="text" name='email' placeholder='Enter email'>
     </label>
     <label for="password">Password:
-      <input type="text" name='password' placeholder='Enter password'>
+      <input type="password"  name="password" id="password" placeholder='Enter password'>
+      <input type="checkbox" onclick="myFunction()">Show Password
+      <script>
+        function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+         }
+      </script>
     </label>
     <input type="submit" value='Submit'>
   </form>
