@@ -68,6 +68,9 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
+    sinatra-bootstrap (0.6.1)
+      sinatra (>= 1.0)
+      sinatra-outputbuffer
     sinatra-contrib (2.1.0)
       multi_json
       mustermann (~> 1.0)
@@ -76,6 +79,8 @@ GEM
       tilt (~> 2.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
+    sinatra-outputbuffer (0.1.0)
+      sinatra (>= 1.0.a)
     tilt (2.0.10)
     unicode-display_width (2.0.0)
     webrick (1.7.0)
@@ -96,6 +101,7 @@ DEPENDENCIES
   rspec
   rubocop
   sinatra
+  sinatra-bootstrap
   sinatra-contrib
   sinatra-flash
   webrick
