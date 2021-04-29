@@ -88,15 +88,16 @@ class Airbnb < Sinatra::Base
   end
 
   post '/property/:id' do
-    booking = Booking.create(params[:start_date],
-       params[:end_date], 
-       params[:id],
-       session[:user_id],
-       "pending review")
-    flash[:confirm] = 'Your rental request has been sent.'
+    if Date.parse(params[:start_date]) < Date.today
+      flash[:error] = 'The date you have requested is in the past, Please try again.'
+    else
+      booking = Booking.create(params[:start_date],
+        params[:end_date], 
+        params[:id],
+        session[:user_id],
+        "pending review")
+      flash[:confirm] = 'Your rental request has been sent.'
+    end
     redirect "/property/#{params[:id]}"
-  end
-
-  get '/property/:id/request' do
   end
 end
