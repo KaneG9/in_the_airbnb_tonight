@@ -5,8 +5,8 @@ require 'message'
 describe Message do
   context '.create' do
     it 'should create a new instance of message' do
-      receiver = User.create('rent test name', 'rent@email.com', 'password1234')
-      owner = User.create('test name', 'test@email.com', 'password1234')
+      receiver = User.create(name: 'rent test name', email: 'rent@email.com', password: 'password1234')
+      owner = User.create(name: 'test name', email: 'test@email.com', password: 'password1234')
       property = Property.create(address: '123 fake street',
                                  postcode: 'E19 4RH',
                                  title: 'Dummy property listing',
@@ -25,8 +25,8 @@ describe Message do
 
   context '.all' do
     it 'should return existing messages' do
-      receiver = User.create('rent test name', 'rent@email.com', 'password1234')
-      owner = User.create('test name', 'test@email.com', 'password1234')
+      receiver = User.create(name: 'rent test name', email: 'rent@email.com', password: 'password1234')
+      owner = User.create(name: 'test name', email: 'test@email.com', password: 'password1234')
       property_1 = Property.create(address: '123 fake street',
                                    postcode: 'E19 4RH',
                                    title: 'Dummy property listing',
@@ -50,8 +50,8 @@ describe Message do
 
   context '.find_rental_requests' do
     it 'should returning an owners message with property details' do
-      renter = User.create('rent test name', 'rent@email.com', 'password1234')
-      owner = User.create('test name', 'test@email.com', 'password1234')
+      renter = User.create(name: 'rent test name', email: 'rent@email.com', password: 'password1234')
+      owner = User.create(name: 'test name', email: 'test@email.com', password: 'password1234')
       property_1 = Property.create(address: '123 fake street',
                                    postcode: 'E19 4RH',
                                    title: 'Dummy property listing',
@@ -76,8 +76,8 @@ describe Message do
 
   context '.confirmed_message' do
     it 'gathers confirmed messages for renter' do
-      renter = User.create('rent test name', 'rent@email.com', 'password1234')
-      owner = User.create('test name', 'test@email.com', 'password1234')
+      renter = User.create(name: 'rent test name', email: 'rent@email.com', password: 'password1234')
+      owner = User.create(name: 'test name', email: 'test@email.com', password: 'password1234')
       property_1 = Property.create(address: '123 fake street',
                                    postcode: 'E19 4RH',
                                    title: 'Dummy property listing',

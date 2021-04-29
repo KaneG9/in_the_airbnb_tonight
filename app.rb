@@ -34,7 +34,9 @@ class Airbnb < Sinatra::Base
     if User.find(column: 'email', value: params[:email])
       flash[:error] = 'User already exists, please log in!'
     else
-      user = User.create(params[:name], params[:email], params[:password])
+      user = User.create(name: params[:name], 
+                         email: params[:email],
+                         password: params[:password])
       flash[:confirm] = "Welcome #{user.name}! Account has been created!"
     end
     redirect '/'

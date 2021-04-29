@@ -4,7 +4,7 @@ require_relative '../web_helpers'
 
 feature 'booking a property' do
   before(:each) do
-    @u = User.create('test name', 'test@email.com', 'test_password1')
+    @u = User.create(name: 'test name', email: 'test@email.com', password: 'test_password1')
   end
 
   scenario 'Users can book a property' do
