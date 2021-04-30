@@ -70,23 +70,27 @@ rubocop
 ## User Interface Flow
 
 ### Sign up
-
+[page]
 ### Sign in
-
+[page]
+[user exists flash message]
+[incorrect password message]
 ### Listings homepage 
-
+[listings view of page]
 ### List a new property
-
+[page]
 ### View a property
-
+[page]
 ### Request to rent a property
-
+[calendar]
+[booking status]
+[dates in past message]
 ### Property request message received
-
+[owner messages view]
 ### Property request approved 
-
+[renter messages view]
 ### Booking status updated
-
+[booking status update]
 
 
 
