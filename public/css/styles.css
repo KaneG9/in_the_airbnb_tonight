@@ -607,6 +607,7 @@ form.signup_form {
   width: 1000px;
   height: 350px;
   margin: 7em auto;
+  margin-bottom: 5px;
   border-radius: 1.5em;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
@@ -675,10 +676,11 @@ form.signup_form {
 .retable {
   background-color: #FFFFFF;
   width: 1000px;
-  height: 500px;
+  height: 300px;
   margin: 7em auto;
   border-radius: 1.5em;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  overflow: auto;
 }
 
 .request_table {
@@ -687,18 +689,17 @@ form.signup_form {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
-  background: rgba(136, 126, 126, 0.04);
   padding: 100px 100px;
   border: none;
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  border: 2px solid rgba(0, 0, 0, 0.02);
   margin-bottom: 20px;
-  margin-left: 46px;
+  margin-left: 0px;
   text-align: center;
   margin-bottom: 27px;
   font-family: 'Ubuntu', sans-serif;
+  overflow: auto;
 }
 
 .table_title {
@@ -707,7 +708,6 @@ form.signup_form {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
-  background: rgba(136, 126, 126, 0.04);
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
@@ -717,7 +717,6 @@ form.signup_form {
   margin-bottom: 50px;
   margin-left: 46px;
   text-align: center;
-  margin-bottom: 27px;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 900;
   font-size: large;
@@ -729,13 +728,11 @@ form.signup_form {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
-  background: rgba(136, 126, 126, 0.04);
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  border: 2px solid rgba(0, 0, 0, 0.02);
   margin-bottom: 50px;
   margin-left: 46px;
   text-align: center;
@@ -749,13 +746,11 @@ form.signup_form {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
-  /* background: rgba(136, 126, 126, 0.04); */
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  /* border: 2px solid rgba(0, 0, 0, 0.02); */
   margin-bottom: 50px;
   margin-left: 46px;
   text-align: center;
@@ -769,13 +764,10 @@ form.signup_form {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
-  /* background: rgba(136, 126, 126, 0.04); */
-  padding: 10px 20px;
   border: none;
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  /* border: 2px solid rgba(0, 0, 0, 0.02); */
   margin-bottom: 50px;
   margin-left: 46px;
   text-align: center;
@@ -810,13 +802,11 @@ form.signup_form {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
-  /* background: rgba(136, 126, 126, 0.04); */
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  /* border: 2px solid rgba(0, 0, 0, 0.02); */
   margin-bottom: 50px;
   margin-left: 110px;
   text-align: center;
@@ -850,13 +840,11 @@ form.signup_form {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
-  /* background: rgba(136, 126, 126, 0.04); */
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  /* border: 2px solid rgba(0, 0, 0, 0.02); */
   margin-bottom: 50px;
   margin-left: 110px;
   text-align: center;
