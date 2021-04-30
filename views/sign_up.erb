@@ -13,13 +13,13 @@
   <h3>Please fill in your details below</h3>
   <form action="/user/new" method='post'>
     <label for="name">Name:
-      <input type="text" name='name' placeholder='Enter name'>
+      <input type="text" name='name' placeholder='Enter name' required="required">
     </label>
     <label for="email">Email:
-      <input type="text" name='email' placeholder='Enter email'>
+      <input type="text" name='email' placeholder='Enter email' required="required">
     </label>
     <label for="password">Password:
-      <input type="password"  name="password" id="password" placeholder='Enter password'>
+      <input type="password"  name="password" id="password" placeholder='Enter password' required="required">
       <input type="checkbox" onclick="myFunction()">Show Password
       <script>
         function myFunction() {

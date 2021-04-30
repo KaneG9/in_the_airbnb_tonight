@@ -41,9 +41,10 @@ feature 'Renting a property' do
     expect(page).to have_content 'A very real place you can visit'
     expect(page).to have_content 'Request'
     expect(page).to have_button 'Confirm request'
+    expect(page).not_to have_content 'Your request has been approved'
   end
 
-  scenario 'Renter receives message upon approval' do
+  scenario 'Renter receives message upon approval and Property status is set to booked' do
     sign_up
     sign_in
     create_test_property
@@ -76,5 +77,9 @@ feature 'Renting a property' do
     expect(page).to have_content('Your request has been approved')
     expect(page).to have_button('Clear message and view property')
     expect(page).not_to have_content('New Request')
+
+    click_button 'Clear message and view property'
+    expect(page).to have_content('Booking confirmed')
+    expect(page).not_to have_content('pending review')
   end
 end

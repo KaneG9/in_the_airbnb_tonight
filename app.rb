@@ -19,7 +19,7 @@ class Airbnb < Sinatra::Base
   enable :sessions, :method_override
 
   before do
-    @user = User.find(session[:user_id])
+    @user = User.find(column: 'id', value: session[:user_id])
   end
 
   get '/' do
@@ -31,10 +31,12 @@ class Airbnb < Sinatra::Base
   end
 
   post '/user/new' do
-    if User.find(session[:user_id])
+    if User.find(column: 'email', value: params[:email])
       flash[:error] = 'User already exists, please log in!'
     else
-      user = User.create(params[:name], params[:email], params[:password])
+      user = User.create(name: params[:name], 
+                         email: params[:email],
+                         password: params[:password])
       flash[:confirm] = "Welcome #{user.name}! Account has been created!"
     end
     redirect '/'
@@ -42,7 +44,7 @@ class Airbnb < Sinatra::Base
 
   get '/homepage' do
     @properties = Property.all
-    @request_messages = Message.join_properties(receiver_id: @user.id)
+    @request_messages = Message.find_rental_requests(receiver_id: @user.id)
     @confirmed_messages = Message.confirmed_messages(receiver_id: @user.id)
     erb :homepage
   end
@@ -79,7 +81,7 @@ class Airbnb < Sinatra::Base
     if property
       flash[:success] = 'You have successfully created a listing'
     else
-      flash[:danger] = 'Something went wrong'
+      flash[:error] = 'Something went wrong'
     end
     redirect '/homepage'
   end
@@ -95,31 +97,37 @@ class Airbnb < Sinatra::Base
     redirect "/property/#{params[:id]}"
   end
 
-
-  post '/property/:id/confirm' do
-    Message.read(params[:message_id])
-    Message.create(sender_id: @user.id, 
-                  property_id: params[:id], 
-                  receiver_id: params[:sender_id])
-    #booking status updated to confirmed
-    redirect '/homepage'
-  end
-
   post '/property/:id' do
     if Date.parse(params[:start_date]) < Date.today
       flash[:error] = 'The date you have requested is in the past, Please try again.'
     else
       property = Property.find(params[:id])
+      booking = Booking.create(start_date: params[:start_date],
+                               end_date: params[:end_date],
+                               property_id: params[:id],
+                               renter_id: session[:user_id],
+                               status: 'pending review')
       message = Message.create(sender_id: @user.id, 
                               property_id: params[:id], 
-                              receiver_id: property.user_id)
-      booking = Booking.create(params[:start_date],
-                               params[:end_date],
-                               params[:id],
-                               session[:user_id],
-                               'pending review')
+                              receiver_id: property.user_id,
+                              confirmed: false,
+                              booking_id: booking.id)
       flash[:confirm] = 'Your rental request has been sent.'
     end
     redirect "/property/#{params[:id]}"
   end
+
+  post '/property/:id/confirm' do
+    Message.read(params[:message_id])
+    Message.create(sender_id: @user.id, 
+                  property_id: params[:id], 
+                  receiver_id: params[:sender_id],
+                  confirmed: true,
+                  booking_id: params[:booking_id])
+    Booking.update_status(params[:booking_id])
+    #booking status updated to confirmed
+    redirect '/homepage'
+  end
+
+  
 end
