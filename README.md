@@ -48,7 +48,7 @@ bundle
 ```
 ### Database Setup
 ```
-rake
+rake setup
 ```
 ### Run App
 App is hosted on localhost:9292
