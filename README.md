@@ -70,29 +70,51 @@ rubocop
 ## User Interface Flow
 
 ### Sign up
-[page]
+<img src="/public/images/user_interface/sign_up.png">
+<p>&nbsp;</p>
+Flash error if email used is not unique
+<img src="/public/images/user_interface/signup_error_flash.png">
+
 ### Sign in
-[page]
-[user exists flash message]
-[incorrect password message]
+
+<img src="/public/images/user_interface/sign_in.png">
+
+
+<img src="/public/images/user_interface/incorrect_login_flash.png">
+
 ### Listings homepage 
-[listings view of page]
+<img src="/public/images/user_interface/listings_homepage.png">
+
 ### List a new property
-[page]
+
+<img src="/public/images/user_interface/list_property.png">
+
 ### View a property
-[page]
+<img src="/public/images/user_interface/property_description_page.png">
+
 ### Request to rent a property
-[calendar]
-[booking status]
-[dates in past message]
+
+<img src="/public/images/user_interface/make_booking.png">
+
+<img src="/public/images/user_interface/rental_request_sent.png">
+
+<img src="/public/images/user_interface/date_in_past_flash.png">
+
 ### Property request message received
-[owner messages view]
+Property owner messages view
+<img src="/public/images/user_interface/rental_request_message.png">
+
 ### Property request approved 
-[renter messages view]
+Renter messages view
+<img src="/public/images/user_interface/request_approved_message.png">
+
 ### Booking status updated
-[booking status update]
 
+<img src="/public/images/user_interface/booking_status_updated.png">
 
+### Logout
+
+<img src="/public/images/user_interface/logout.png">
 
 <p>&nbsp;</p>
 
