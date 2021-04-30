@@ -2,12 +2,132 @@ MakersBnB
 =================
 Challenge:
  -------
+Builld a web application clone of AirBnB that allows users to list spaces they have available, and to hire spaces for the night.
+
 By the end of the week, the goal is to be able to answer "yes" to the week's primary question:
 
 - Can you, with only a specification to guide you, work as part of a team to build a web app?
 
- Features:
+
+
+<p>&nbsp;</p>
+
+ Completed Features:
  -------
+ - [x] Sign up / Log in / Log out
+ - [x] Add a property
+ - [x] View a property
+ - [x] Book a property - see pending and confirmed booking requests
+ - [x] Message sent to owner account upon rental request
+ - [x] Message sent to renter after rental request approval
+<p>&nbsp;</p>
+
+## Tech Stack
+Frontend
+* HTML
+* CSS
+
+Backend
+* Ruby
+* Sinatra web framework
+* PostgreSQL
+
+Testing
+* RSpec
+* Capybara 
+<p>&nbsp;</p>
+
+## How to install and run
+<p>&nbsp;</p>
+
+### Project Setup
+```
+git clone https://github.com/MattDawson2020/in_the_airbnb_tonight.git
+
+bundle
+```
+### Database Setup
+```
+rake
+```
+### Run App
+App is hosted on localhost:9292
+```
+rackup
+```
+
+### Run Tests
+```
+rspec
+```
+
+### Run Linting
+```
+rubocop
+```
+<p>&nbsp;</p>
+
+## User Flow
+[Screenshots]
+
+<p>&nbsp;</p>
+
+## Planning
+
+
+### Project Management
+
+<a href="https://trello.com/b/PyreuO8R/workflow">Link to trello board</a>
+<p>&nbsp;</p>
+
+### Specification
+<details>
+<summary> Headline </summary>
+<br>
+<ul>
+<li>Any signed-up user can list a new space.</li>
+<li>Users can list multiple spaces.</li>
+<li>Users should be able to name their space, provide a short description of the <li>space, and a price per night.</li>
+<li>Users should be able to offer a range of dates where their space is available.</li>
+<li>Any signed-up user can request to hire any space for one night, and this should be approved by the user that owns that space.</li>
+<li>Nights for which a space has already been booked should not be available for users to book that space.</li>
+<li>Until a user has confirmed a booking request, that space can still be booked for that night.</li>
+</ul>
+</details>
+
+
+<details>
+<summary> Nice-to-haves </summary>
+<br>
+<ul>
+Users should receive an email whenever one of the following happens:
+<li>They sign up</li>
+<li>They create a space</li>
+<li>They update a space</li>
+<li>A user requests to book their space</li>
+<li>They confirm a request</li>
+<li>They request to book a space</li>
+<li>Their request to book a space is confirmed</li>
+<li>Their request to book a space is denied</li><br>
+Users should receive a text message to a provided number whenever one of the following happens:
+<li>A user requests to book their space</li>
+<li>Their request to book a space is confirmed</li>
+<li>Their request to book a space is denied </li> <br>
+<li>A ‘chat’ functionality once a space has been booked, allowing users whose space-booking request has been confirmed to chat with the user that owns that space</li>
+<li>Basic payment implementation though Stripe.</li><br>
+</ul>
+</details>
+<p>&nbsp;</p>
+
+### Outline of MVP
+* Users can sign up/in/out
+* Signed up user can list a space
+* Signed up user can request to rent a space
+* Signed up user can approve or deny a booking request on their listing
+* Signed up user can see their booking confirmed
+* Basic styling
+<p>&nbsp;</p>
+
 ### User Stories
 ```
 CREATE ACCOUNT
@@ -73,6 +193,7 @@ As an owner
 So that I can maximise my business opportunities
 I can continue to advertise my property as available until booking is confirmed
 ```
+<p>&nbsp;</p>
 
 ### Domain Model
 
@@ -95,3 +216,15 @@ I can continue to advertise my property as available until booking is confirmed
 <img src="/public/images/makersBnB_rent_a_property.png">
 </details>
 
+<p>&nbsp;</p>
+
+## Reflections
+
+
+<p>&nbsp;</p>
+
+## Built by:
+* Matt Dawson | [GitHub](https://github.com/MattDawson2020)
+* Kane Gin | [GitHub](https://github.com/KaneG9)
+* Tiffany Vallo | [GitHub](https://github.com/tiffanyvallo)
+* Finn Williamson | [GitHub](https://github.com/fwill22)
