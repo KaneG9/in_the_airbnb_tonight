@@ -43,6 +43,7 @@ class Airbnb < Sinatra::Base
   end
 
   get '/homepage' do
+    redirect '/' unless @user
     @properties = Property.all
     @request_messages = Message.find_rental_requests(receiver_id: @user.id)
     @confirmed_messages = Message.confirmed_messages(receiver_id: @user.id)
