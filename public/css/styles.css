@@ -46,7 +46,31 @@ body {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
-  margin-left: 37%;
+  margin-left: 38%;
+}
+
+.property_message_heading {
+  padding-top: 10px;
+  color: #364096;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  margin-left: 29%;
+}
+
+h4 {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  outline: none;
+
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+  overflow: auto;
 }
 
 .property_list{

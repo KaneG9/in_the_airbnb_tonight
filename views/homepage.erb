@@ -33,14 +33,22 @@
         </div>
 
         <div class="home_box">
-          <h2 class="property_listing_heading"> Listings: </h2>
+          <h2 class="property_listing_heading"> Listings </h2>
               <% @properties.each do |property| %>
                <p class="property_listing">
                 <%= property.title%>
                 <br>
-                <%= "Property area: #{property.postcode}"%>
+                  <h4>Area:</h4>
                 <br>
-                <%= "Property details #{property.description}"%>
+                <div class="property_listing">
+                  <%= "#{property.postcode}"%>
+                </div>
+                <br>
+                  <h4>Details</h4>
+                <br>
+                <div class="property_listing">
+                  <%= "#{property.description}"%>
+                </div>
                 </p>
               <form action="/property/<%= property.id %>" method="get">
                 <input type="submit" value="View Property" class="view_property_button"> 
@@ -49,7 +57,7 @@
         </div>
       
         <div class="message_box">
-          <h2 class="property_listing_heading">&#128231; Messages &#128231;</h2>
+          <h2 class="property_message_heading">&#128231; Messages &#128231;</h2>
             <% if @request_messages %>
               <% @request_messages.each do |message| %>
                 <p class="request_message">
@@ -69,7 +77,7 @@
               <%= "Your request has been approved" %> <%# make message.confirmed message a join method and input name of property into confirmation%>
                   <form action="/property/<%= message.property_id %>/accept_confirmation" method="post">
                   <input type="hidden" name="message_id" value='<%=message.id%>'>
-                  <input type="submit" value="Clear message and view property" class="clear_button">
+                  <input type="submit" value="Clear message" class="clear_button">
                   </form>
                 </p>
               <% end%>
