@@ -5,7 +5,7 @@ header {
   font-size: xx-large;
   text-align: center;
   padding: 1px;
-
+  margin: 0;
 }
 
 footer {
@@ -26,6 +26,7 @@ body {
   background: url(https://i.pinimg.com/originals/49/dd/64/49dd6458a988a0cc8e45fbbb688093c6.jpg) no-repeat center fixed;
   background-size: cover;
   color: rgb(0, 0, 0);
+  margin: 0;
 }
 
 .property_listing_heading {
