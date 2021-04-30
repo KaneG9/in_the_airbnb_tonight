@@ -43,6 +43,7 @@ class Airbnb < Sinatra::Base
   end
 
   get '/homepage' do
+    redirect '/' unless @user
     @properties = Property.all
     @request_messages = Message.find_rental_requests(receiver_id: @user.id)
     @confirmed_messages = Message.confirmed_messages(receiver_id: @user.id)
@@ -68,6 +69,7 @@ class Airbnb < Sinatra::Base
   end
 
   get '/property/new' do
+    redirect '/' unless @user
     erb(:"property/new")
   end
 
@@ -87,6 +89,7 @@ class Airbnb < Sinatra::Base
   end
 
   get '/property/:id' do
+    redirect '/' unless @user
     @property = Property.find(params['id'])
     @bookings = Booking.find(params['id'])
     erb :'property/id'
@@ -128,6 +131,4 @@ class Airbnb < Sinatra::Base
     #booking status updated to confirmed
     redirect '/homepage'
   end
-
-  
 end

@@ -9,23 +9,6 @@
   </head>
 
   <body> 
-    <header>
-      <h1>&#127968; MakersBnB &#127968;</h1>
-    </header>
-    
-      <div>
-       <div> <!-- button navigation -->
-          <form action="/homepage" method='get'>
-            <input type="submit" value='Homepage'>
-          </form>
-          <form action="/property/new" method="get">
-              <button type="submit"> List a property </button>
-          </form>
-          <form action="/session/destroy" method='post'>
-              <button type="submit"> Logout </button>
-            </form>
-        </div>
-
         <div>
           <% flash.keys.each do |type| %>
             <div data-alert class="flash <%= type %> alert-box radius">
@@ -34,6 +17,7 @@
             </div>
           <% end %>        
         </div>
+
 
           <div class="prop_box_id"> 
            <strong> <h1 class="request_pt"> <%= @property.title%> </h1>
@@ -47,7 +31,39 @@
                <p class="request_ppd">
                  £<%= @property.price_per_day%> per day
                </p>
+             /* check for what this does */
+        <div class="property_id_nav_buttons"> 
+          <h1 class="header-left">&#127968; MakersBnB &#127968;</h1>
+          <div class='header-right'>
+            <form action="/session/destroy" method='post'>
+              <button type="submit"> Logout </button>
+            </form>
           </div>
+          <div class='header-right'>
+            <form action="/homepage" method='get'>
+              <button type="submit"> Homepage </button>
+            </form>
+          </div>
+          <div class='header-right'>
+            <form action="/property/new" method="get">
+              <button type="submit"> List a property </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="prop_box_id"> 
+          <strong> <h1 class="request_pt"> <%= @property.title%> </h1>
+          <br>
+            <div class="prop_description">Property Description: </div>
+              <p class="pd_text">
+                <%= @property.description%>
+              </p>
+            <br>
+          <div class="ppd_text">Property Price Per Day: </div>
+              <p class="request_ppd">
+                £<%= @property.price_per_day%> per day
+              </p>
+        </div>
           
           <div class="rentform">
             <form action="/property/<%= @property.id %>" method='post' class="rent_form">
