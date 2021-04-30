@@ -35,7 +35,10 @@
         </div>
 
         <div>
+          <div class="home_title">
           <h2 class="property_listing_heading"> Here are the available listings: </h2>
+            </div>
+            <div class="property_list">
             <% @properties.each do |property| %>
                <p class="property_listing">
                   <%= property.title%>
@@ -44,10 +47,11 @@
                   <br>
                   <%= "Property details #{property.description}"%>
                   <form action="/property/<%= property.id %>" method="get" class="view_property_button">
-                  <button type="submit"> View Property </button>
+                  <input type="submit" value="View Property"> 
                   </form>
                 </p>
               <% end %>
+              </div>
         </div>
       
         <div>

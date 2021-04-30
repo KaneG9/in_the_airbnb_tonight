@@ -35,25 +35,26 @@
           <% end %>        
         </div>
 
-        <div> 
-          <h1 class="request_pt"> <%= @property.title%> </h1>
-            <p class="request_pd">
-              <%= @property.description%>
-            </p>
+          <div class="prop_box_id"> 
+           <strong> <h1 class="request_pt"> <%= @property.title%> </h1>
             <br>
-            <p class="request_ppd">
-              £<%= @property.price_per_day%> per day
-            </p>
+              <div class="prop_description">Property Description: </div>
+                <p class="pd_text">
+                  <%= @property.description%>
+               </p>
+              <br>
+            <div class="ppd_text">Property Price Per Day: </div>
+               <p class="request_ppd">
+                 £<%= @property.price_per_day%> per day
+               </p>
           </div>
           
           <div class="rentform">
             <form action="/property/<%= @property.id %>" method='post' class="rent_form">
-              <label for="start_date">Start Date:
+              <div class="start_text">Start Date: </div>
                 <input type="date" id="start_date" name="start_date" class="start_rent">
-              </label>
-              <label for="end_date">End Date:
+              <div class="end_text">End Date: </div>
                 <input type="date" id="end_date" name="end_date" class="end_rent">
-              </label>
               <input type="submit" value='Request rental' class="rent_button">
             </form>
          </div>
@@ -61,14 +62,14 @@
         <br>
         <div class="retable">
           <table style="width:50%" id='bookings_table' class="request_table">
-            <tr>
+            <tr class="table_title">
               <th>Start Date</th>
               <th>End Date</th>
               <th>Booking Status</th>
             </tr>
             <% if @bookings != nil %>
               <% @bookings.each do |booking|%>
-                <tr>
+                <tr class="table_des">
                   <td><%=booking.start_date%></td>
                   <td><%=booking.end_date%></td>
                   <td><%=booking.status%></td>
