@@ -5,38 +5,50 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to AirBnb</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
-  <h1>Welcome to AirBnb</h1>
-  <% flash.keys.each do |type| %>
+  <header>
+    <h1>&#127968; MakersBnB &#127968;</h1>
+  </header>
+
+  <div>
+    <div>
+      <% flash.keys.each do |type| %>
         <div data-alert class="flash <%= type %> alert-box radius">
             <%= flash[type] %>
             <a href="/" class="close">&times;</a>
         </div>
-  <% end %>
-  <h3>Please sign in or sign up</h3>
-  <form action="/user/new">
-    <input type="submit" value="Sign up">
-  </form>
-  <form action="/session/new" method="post">
-  <label for="email">Email:
-      <input type="text" name='email' placeholder='Enter email'>
-    </label>
-    <label for="password">Password:
-      <input type="password"  name="password" id="password" placeholder='Enter password'>
-      <input type="checkbox" onclick="myFunction()">Show Password
-      <script>
-        function myFunction() {
-        var x = document.getElementById("password");
-        if (x.type === "password") {
-          x.type = "text";
-        } else {
-          x.type = "password";
-        }
-         }
-      </script>
-    </label>
-    <input type="submit" value="Log in">
-  </form>
+      <% end %>
+    </div>
+    <div class="boxform"> 
+      <p class="sign_title">Sign in</p>
+        <form action="/session/new" method="post" class="signin_form">
+          <input type="text" name='email' placeholder='Enter email' class="email_box">
+          <input type="password"  name="password" id="password" placeholder='Enter password' class="password_box">
+          <input type="checkbox" onclick="myFunction()" class="show_pass">
+            <script>
+              function myFunction() {
+              var x = document.getElementById("password");
+              if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
+              }
+            </script>
+          <input type="submit" value="Log in" class="login_button">
+        </form>
+        <form action="/user/new">
+          <input type="submit" value="Sign up" class="signup_button">
+        </form>
+    </div>
+  </div>
+
+   <footer>
+     🦍 © In the AirBnB Tonight 🦍 | 
+    <a href="https://github.com/MattDawson2020/in_the_airbnb_tonight">Project GitHub</a>
+  </footer>
 </body>
 </html>

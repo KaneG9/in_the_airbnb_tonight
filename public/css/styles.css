@@ -1,0 +1,344 @@
+header {
+  color: blanchedalmond;
+  background-color: rgba(11, 26, 56, 0.575);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+  text-align: center;
+  padding: 1px;
+
+}
+
+footer {
+  color: blanchedalmond;
+  background-color: rgba(11, 26, 56, 0.575);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  text-align: left;
+  position: fixed;
+  padding: 1px;
+  align-self: end;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+body {
+  background: url(https://images.unsplash.com/photo-1566975994395-1b96ae93ca79?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b2ZmaWNlJTIwd2luZG93JTIwdmlld3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80) no-repeat center fixed;
+  background-size: cover;
+  color: rgb(0, 0, 0);
+}
+
+.property_listing_heading {
+  color: black;
+  background-color: rgb(212, 191, 162);
+  text-align: center;
+  border: blanchedalmond;
+  border-style: none;
+  font-size: xx-large;
+}
+
+.property_listing {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border: blanchedalmond;
+  border-style: outset;
+  font-size: 20px;
+  background: rgb(212, 191, 162);
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.view_property_button {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border: none;
+  float: inherit;
+}
+
+/* this isnt going in a line and I dont know why */
+.homepage_nav_buttons {
+  text-align: center;
+  display: inline-block;
+}
+ /* this isnt going in a line and I dont know why */
+
+.request_message {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border: blanchedalmond;
+  border-style: outset;
+  font-size: 20px;
+  background: rgb(212, 191, 162);
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.confirm_request_button {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border: none;
+  float: inherit;
+}
+
+.approved_message {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border: blanchedalmond;
+  border-style: outset;
+  font-size: 20px;
+  background: rgb(212, 191, 162);
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.clear_button {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border: none;
+  float: inherit;
+}
+
+.homepage_welcome {
+  padding: 20px;
+  background-color: #ddc434;
+  color: white;
+}
+
+.close {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: black;
+}
+
+.boxform {
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 400px;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.sign_title {
+  padding-top: 40px;
+  color: #8C55AA;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  margin-left: 40%;
+}
+
+.email_box {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+form.signin_form {
+  padding-top: 40px;
+}
+
+.password_box {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.email_box:focus, .password_box:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.login_button {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 35%;
+  margin-top: 2%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.show_pass {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #E1BEE7;
+  padding-top: 1px;
+  font-size: 1px;
+}
+
+.signup_button {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 35%;
+  margin-top: 2%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.signup_title {
+  padding-top: 40px;
+  color: #8C55AA;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.sign_name {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+
+}
+
+form.signform {
+  padding-top: 40px;
+}
+
+.signup_form {
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 400px;
+  margin: -3em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.sign_email {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.signup_pass {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+.sign_sp {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #E1BEE7;
+  padding-top: 15px;
+}
+
+.sign_name:focus, .sign_email:focus, .signup_pass:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.submit_signup {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 35%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
