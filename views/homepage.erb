@@ -44,7 +44,7 @@
                   <%= "#{property.postcode}"%>
                 </div>
                 <br>
-                  <h4>Details</h4>
+                  <h4>Details:</h4>
                 <br>
                 <div class="property_listing">
                   <%= "#{property.description}"%>
@@ -71,6 +71,7 @@
                 </p>
               <% end%>
             <% end%>
+            <hr>
             <% if @confirmed_messages%>
             <% @confirmed_messages.each do |message| %>
               <p class="approved_message">

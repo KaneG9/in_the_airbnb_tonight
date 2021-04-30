@@ -37,7 +37,7 @@ class Airbnb < Sinatra::Base
       user = User.create(name: params[:name], 
                          email: params[:email],
                          password: params[:password])
-      flash[:confirm] = "Welcome #{user.name}! Account has been created!"
+      flash[:confirm] = "Welcome #{user.name.capitalize}! Account has been created!"
     end
     redirect '/'
   end
@@ -54,7 +54,7 @@ class Airbnb < Sinatra::Base
     user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      flash[:confirm] = "Welcome #{user.name}! Successfully logged in!"
+      flash[:confirm] = "Welcome #{user.name.capitalize}! Successfully logged in!"
       redirect '/homepage'
     else
       flash[:error] = 'Sorry email or password does not match!'

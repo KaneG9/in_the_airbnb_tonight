@@ -75,10 +75,10 @@ feature 'Renting a property' do
     click_button 'Log in'
 
     expect(page).to have_content('Your request has been approved')
-    expect(page).to have_button('Clear message and view property')
+    expect(page).to have_button('Clear message')
     expect(page).not_to have_content('New Request')
 
-    click_button 'Clear message and view property'
+    click_button 'Clear message'
     expect(page).to have_content('Booking confirmed')
     expect(page).not_to have_content('pending review')
   end

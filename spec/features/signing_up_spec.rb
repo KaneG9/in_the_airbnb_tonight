@@ -8,7 +8,7 @@ feature 'signing up' do
     fill_in('name', with: 'test name')
     fill_in('password', with: 'test_password1')
     click_button 'Submit'
-    expect(page).to have_content 'Welcome test name!'
+    expect(page).to have_content 'Welcome Test name!'
   end
 
   scenario 'An existing user can not sign up again' do
