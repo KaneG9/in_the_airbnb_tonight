@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
-</head>
-<body>
-  <form action="/homepage" method='get'>
-    <input type="submit" value='Homepage'>
-  </form>
-  <h3>Please fill in your details below</h3>
-  <form action="/user/new" method='post'>
-    <label for="name">Name:
-      <input type="text" name='name' placeholder='Enter name' required="required">
-    </label>
-    <label for="email">Email:
-      <input type="text" name='email' placeholder='Enter email' required="required">
-    </label>
-    <label for="password">Password:
-      <input type="password"  name="password" id="password" placeholder='Enter password' required="required">
-      <input type="checkbox" onclick="myFunction()">Show Password
-      <script>
-        function myFunction() {
-        var x = document.getElementById("password");
-        if (x.type === "password") {
-          x.type = "text";
-        } else {
-          x.type = "password";
-        }
-         }
-      </script>
-    </label>
-    <input type="submit" value='Submit'>
-  </form>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>&#127968; MakersBnB &#127968;</h1>
+    </header>
+ 
+      <div> 
+        <div>
+          <form action="/" method='get'>
+            <input type="submit" value='Sign in'>
+          </form>
+        </div>
+
+        <div class="signform">
+          <p class="signup_title">Fill in details
+            <form action="/user/new" method='post' class="signup_form">
+              <input type="text" name='name' placeholder='Enter name' class="sign_name" required="required">
+              <input type="text" name='email' placeholder='Enter email' class="sign_email" required="required">
+              <input type="password"  name="password" id="password" placeholder='Enter password' class="signup_pass" required="required">
+              <input type="checkbox" onclick="myFunction()" class="sign_sp">
+                <script>
+                  function myFunction() {
+                  var x = document.getElementById("password");
+                  if (x.type === "password") {
+                    x.type = "text";
+                  } else {
+                    x.type = "password";
+                  }
+                  }
+                </script>
+              <input type="submit" value='Submit' class="submit_signup">
+            </form>
+        </div>
+      </div>
+    <footer>
+      🦍 © In the AirBnB Tonight 🦍 | 
+    <a href="https://github.com/MattDawson2020/in_the_airbnb_tonight">Project GitHub</a>
+    </footer>
+  </body>
 </html>

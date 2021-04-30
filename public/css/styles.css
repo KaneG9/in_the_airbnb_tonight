@@ -1,0 +1,413 @@
+header {
+  color: blanchedalmond;
+  background-color: rgba(11, 26, 56, 0.575);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+  text-align: center;
+  padding: 1px;
+
+}
+
+footer {
+  color: blanchedalmond;
+  background-color: rgba(11, 26, 56, 0.575);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  text-align: left;
+  position: fixed;
+  padding: 1px;
+  align-self: end;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+body {
+  background: url(https://i.pinimg.com/originals/49/dd/64/49dd6458a988a0cc8e45fbbb688093c6.jpg) no-repeat center fixed;
+  background-size: cover;
+  color: rgb(0, 0, 0);
+}
+
+.property_listing_heading {
+  color: black;
+  background-color: rgb(250, 240, 208);
+  text-align: center;
+  border: blanchedalmond;
+  border-style: none;
+  font-size: xx-large;
+}
+
+.property_listing {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border: blanchedalmond;
+  border-style: outset;
+  font-size: 20px;
+  background: rgb(250, 240, 208);
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border-radius: 1.5em;
+}
+
+.view_property_button {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border: none;
+  float: inherit;
+}
+
+/* this isnt going in a line and I dont know why */
+.homepage_nav_buttons {
+  text-align: center;
+  display: inline-block;
+}
+ /* this isnt going in a line and I dont know why */
+
+.request_message {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border: blanchedalmond;
+  border-style: outset;
+  font-size: 20px;
+  background: rgb(250, 240, 208);
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.confirm_request_button {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border: none;
+  float: inherit;
+}
+
+.approved_message {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border: rgb(250, 240, 208);
+  border-style: outset;
+  font-size: 20px;
+  background: rgb(250, 240, 208);
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.clear_button {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border: none;
+  float: inherit;
+}
+
+.flash {
+  padding: 20px;
+  background-color: #0d7ee9;
+  color: white;
+  font-size: xx-large;
+}
+
+.close {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: black;
+}
+
+.boxform {
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 400px;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.sign_title {
+  padding-top: 40px;
+  color: #364096;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  margin-left: 40%;
+}
+
+.email_box {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+form.signin_form {
+  padding-top: 40px;
+}
+
+.password_box {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.email_box:focus, .password_box:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.login_button {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 35%;
+  margin-bottom: 2%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.show_pass {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #E1BEE7;
+  padding-top: 1px;
+  font-size: 1px;
+}
+
+.signup_button {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 35px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 35%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.signup_title {
+  padding-top: 40px;
+  color: #364096;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  margin-left: 35%;
+}
+
+.sign_name {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+form.signup_form {
+  padding-top: 40px;
+}
+
+.signform {
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 400px;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.sign_email {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.signup_pass {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+.sign_sp {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #E1BEE7;
+  padding-top: 15px;
+}
+
+.sign_name:focus, .sign_email:focus, .signup_pass:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.submit_signup {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 35%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.pd_title {
+
+}
+
+.property_form {
+
+}
+
+.prop_title {
+
+}
+
+.prop_add {
+
+}
+
+.prop_postcode {
+
+}
+
+.prop_des {
+
+}
+
+.prop_price {
+
+}
+
+.create_list_button {
+
+}
+
+.request_pt {
+
+}
+
+.request_pd {
+
+}
+
+.rentform {
+
+}
+
+.rent_form{
+
+}
+
+.start_rent {
+
+}
+
+.end_rent {
+
+}
+
+.rent_button {
+
+}
+
+.retable {
+
+}
+
+.request_table {
+
+}
+
