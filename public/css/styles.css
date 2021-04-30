@@ -26,16 +26,10 @@ body {
   background: url(https://i.pinimg.com/originals/49/dd/64/49dd6458a988a0cc8e45fbbb688093c6.jpg) no-repeat center fixed;
   background-size: cover;
   color: rgb(0, 0, 0);
+  margin: 0px;
 }
 
-.property_listing_heading {
-  color: black;
-  background-color: rgb(250, 240, 208);
-  text-align: center;
-  border: blanchedalmond;
-  border-style: none;
-  font-size: xx-large;
-}
+
 
 .home_title {
   padding-top: 40px;
@@ -46,13 +40,33 @@ body {
   margin-left: 40%;
 }
 
+.property_listing_heading {
+  padding-top: 10px;
+  color: #364096;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  margin-left: 30%;
+}
+
 .property_list{
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 800px;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  overflow: auto;
+}
+
+.home_box {
   background-color: #FFFFFF;
   width: 400px;
   height: 400px;
   margin: 7em auto;
   border-radius: 1.5em;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  overflow: auto;
 }
 
 .property_listing {
@@ -73,6 +87,7 @@ body {
   text-align: center;
   margin-bottom: 27px;
   font-family: 'Ubuntu', sans-serif;
+  overflow: auto;
 }
 
 .view_property_button {
@@ -82,11 +97,11 @@ body {
   background: linear-gradient(to right, #480abb, #3c2adb);
   border: 0;
   padding-left: 40px;
-  padding-right: 40px;
+  padding-right: 35px;
   padding-bottom: 10px;
   padding-top: 10px;
   font-family: 'Ubuntu', sans-serif;
-  margin-left: 35%;
+  margin-left: 30%;
   font-size: 13px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
@@ -99,45 +114,88 @@ body {
  /* this isnt going in a line and I dont know why */
 
 .request_message {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
   text-align: center;
-  color: rgb(0, 0, 0);
-  border: blanchedalmond;
-  border-style: outset;
-  font-size: 20px;
-  background: rgb(250, 240, 208);
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+  overflow: auto;
+}
+
+.message_box {
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 400px;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  overflow: auto;
 }
 
 .confirm_request_button {
-  text-align: center;
-  color: rgb(0, 0, 0);
   cursor: pointer;
-  border: none;
-  float: inherit;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 35px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 30%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  overflow: auto;
 }
 
 .approved_message {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
   text-align: center;
-  color: rgb(0, 0, 0);
-  border: rgb(250, 240, 208);
-  border-style: outset;
-  font-size: 20px;
-  background: rgb(250, 240, 208);
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+  overflow: auto;
 }
 
 .clear_button {
-  text-align: center;
-  color: rgb(0, 0, 0);
   cursor: pointer;
-  border: none;
-  float: inherit;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 35px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 30%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
 .flash {
