@@ -96,8 +96,10 @@ Flash error if email used is not unique
 
 <img src="/public/images/user_interface/make_booking.png">
 
+Booking status set to pending review
 <img src="/public/images/user_interface/rental_request_sent.png">
 
+Dates in past trigger error
 <img src="/public/images/user_interface/date_in_past_flash.png">
 
 ### Property request message received
