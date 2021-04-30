@@ -23,9 +23,9 @@
         <div class="signform">
           <p class="signup_title">Fill in details
             <form action="/user/new" method='post' class="signup_form">
-              <input type="text" name='name' placeholder='Enter name' class="sign_name">
-              <input type="text" name='email' placeholder='Enter email' class="sign_email">
-              <input type="password"  name="password" id="password" placeholder='Enter password' class="signup_pass">
+              <input type="text" name='name' placeholder='Enter name' class="sign_name" required="required">
+              <input type="text" name='email' placeholder='Enter email' class="sign_email" required="required">
+              <input type="password"  name="password" id="password" placeholder='Enter password' class="signup_pass" required="required">
               <input type="checkbox" onclick="myFunction()" class="sign_sp">
                 <script>
                   function myFunction() {

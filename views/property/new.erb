@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,20 +41,20 @@
               <form action="/property/new" method="post" class="property_form">
                 <input type="hidden" name="user_id" id="user_id" value="<%= @user.id %>">
                 <label for="title">Title:
-                  <input type="text" name="title" placeholder="Give your listing a name" class="prop_title">
+                  <input type="text" name="title" placeholder="Give your listing a name" class="prop_title" required="required"> 
                 </label>
                 <label for="address">Address:
-                  <input type="text" name="address" placeholder="Street address" class="prop_add">
+                  <input type="text" name="address" placeholder="Street address" class="prop_add" required="required">
                 </label>
                 <label for="postcode">Postcode:
-                  <input type="text" name="postcode" placeholder="Postcode" class="prop_postcode">
+                  <input type="text" name="postcode" placeholder="Postcode" class="prop_postcode" required="required">
                 </label>
                 <label for="description">Description:
-                  <textarea id="description" name="description" rows="5" cols="20" placeholder="Tell us about what makes your property special" class="prop_des">
+                  <textarea id="description" name="description" rows="5" cols="20" class="prop_des" required="required">
                   </textarea>
                 </label>
                 <label for="number">Price:
-                  <input type="number" name="price_per_day" placeholder="How much would you like to rent it for" class="prop_price">
+                  <input type="number" name="price_per_day" placeholder="How much would you like to rent it for" class="prop_price" required="required">
                 </label>
                 <button type='submit' value="Create listing" class="create_list_button"> Create listing</button>
               </form>

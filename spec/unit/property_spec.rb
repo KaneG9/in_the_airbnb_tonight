@@ -23,7 +23,7 @@ describe Property do
     end
 
     it 'stores a user id' do
-      user = User.create('test name', 'test@email.com', 'password1234')
+      user = User.create(name: 'test name', email: 'test@email.com', password: 'password1234')
       property = Property.create(address: '123 fake street',
                                 postcode: 'E19 4RH',
                                 title: 'Dummy property listing',
@@ -38,7 +38,7 @@ describe Property do
   context '.create' do
     it 'should create a new instance of Property' do
 
-      user = User.create('test name', 'test@email.com', 'password1234')
+      user = User.create(name: 'test name', email: 'test@email.com', password: 'password1234')
       property = Property.create(address: '123 fake street',
                                 postcode: 'E19 4RH',
                                 title: 'Dummy property listing',
@@ -54,8 +54,8 @@ describe Property do
   context '.all' do
     it 'should return existing properties' do
 
-      user = User.create('test name', 'test@email.com', 'password1234')
-      user_2 = User.create('test name 2', 'test2@email.com', 'password12345')
+      user = User.create(name: 'test name', email: 'test@email.com', password: 'password1234')
+      user_2 = User.create(name: 'test name 2', email: 'test2@email.com', password: 'password12345')
       property_1 = Property.create(address: '123 fake street',
                                   postcode: 'E19 4RH',
                                   title: 'Dummy property listing',
@@ -80,7 +80,7 @@ describe Property do
 
   context '#find method' do
     it 'can find property from database' do
-      user = User.create('test name', 'test@email.com', 'password1234')
+      user = User.create(name: 'test name', email: 'test@email.com', password: 'password1234')
       property = Property.create(address: '123 fake street', postcode: 'E19 4RH', title: 'Dummy property listing',
                                  description: 'generic property info', user_id: user.id, price_per_day: 100)
       find = Property.find(property.id)
