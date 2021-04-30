@@ -18,6 +18,20 @@
           <% end %>        
         </div>
 
+
+          <div class="prop_box_id"> 
+           <strong> <h1 class="request_pt"> <%= @property.title%> </h1>
+            <br>
+              <div class="prop_description">Property Description: </div>
+                <p class="pd_text">
+                  <%= @property.description%>
+               </p>
+              <br>
+            <div class="ppd_text">Property Price Per Night: </div>
+               <p class="request_ppd">
+                 £<%= @property.price_per_day%> per day
+               </p>
+             /* check for what this does */
         <div class="property_id_nav_buttons"> 
           <h1 class="header-left">&#127968; MakersBnB &#127968;</h1>
           <div class='header-right'>
@@ -63,7 +77,7 @@
 
         <br>
         <div class="retable">
-          <table style="width:50%" id='bookings_table' class="request_table">
+          <table style="width:100%" id='bookings_table' class="request_table">
             <tr class="table_title">
               <th>Start Date</th>
               <th>End Date</th>
