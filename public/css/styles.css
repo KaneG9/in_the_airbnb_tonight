@@ -1,13 +1,3 @@
-/* header {
-  color: blanchedalmond;
-  background-color: rgba(11, 26, 56, 0.575);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: xx-large;
-  text-align: center;
-  padding: 1px;
-
-} */
-
 footer {
   color: blanchedalmond;
   background-color: rgba(11, 26, 56, 0.575);
@@ -863,9 +853,17 @@ form.signup_form {
   font-family: 'Ubuntu', sans-serif;
 }
 
+
+.header-right {
+  float: right;
+}
+.header-left {
+  float: left;
+  margin-left: 15px;
+}
+
 .homepage_nav_buttons {
   overflow: hidden;
-  background-color: #e22222;
   width: 100%;
   border: 0px;
   margin:0px;
@@ -873,14 +871,55 @@ form.signup_form {
   background-color: rgba(11, 26, 56, 0.575);
 }
 
-.header-right {
-  float: right;
-}
-.header-left {
+.homepage_nav_buttons button {
   float: left;
+  color: rgb(250, 250, 250);
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 18px;
+  border: unset
 }
 
-.homepage_nav_buttons button {
+.property_new_nav_buttons {
+  overflow: hidden;
+  width: 100%;
+  border: 0px;
+  margin:0px;
+  color: blanchedalmond;
+  background-color: rgba(11, 26, 56, 0.575);
+}
+
+.property_new_nav_buttons button {
+  float: left;
+  color: rgb(250, 250, 250);
+  background: linear-gradient(to right, #480abb, #3c2adb);
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 18px;
+  border: unset
+}
+
+.property_id_nav_buttons {
+  overflow: hidden;
+  width: 100%;
+  border: 0px;
+  margin:0px;
+  color: blanchedalmond;
+  background-color: rgba(11, 26, 56, 0.575);
+}
+
+.property_id_nav_buttons button {
   float: left;
   color: rgb(250, 250, 250);
   background: linear-gradient(to right, #480abb, #3c2adb);
