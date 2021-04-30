@@ -8,6 +8,6 @@ feature 'Logging out' do
     sign_in
     click_button 'Logout'
     expect(page).to have_content('Successful log out')
-    expect(page).to have_content('Welcome to AirBnb')
+    expect(page).to have_content('Sign in')
   end
 end

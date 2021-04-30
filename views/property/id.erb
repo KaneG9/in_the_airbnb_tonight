@@ -1,61 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viewing Property in <%= @property.postcode %></title> 
-</head>
-<body> 
-  <h1>&#127968; MakersBnB &#127968;</h1>
-  <form action="/session/destroy" method='post'>
-    <input type="submit" value='Logout'>
-  </form>
-  <form action="/homepage" method='get'>
-    <input type="submit" value='Homepage'>
-  </form>
-  <h1> <%= @property.title%> </h1>
-  <p>
-    <%= @property.description%>
-    <br>
-    £<%= @property.price_per_day%> per day
-  </p>
-  <% flash.keys.each do |type| %>
-        <div data-alert class="flash <%= type %> alert-box radius">
-            <%= flash[type] %>
-            <a href="/property/<%= @property.id %>" class="close">&times;</a>
-        </div>
-  <% end %>
-  <form action="/property/<%= @property.id %>" method='post'>
-    <label for="start_date">Start Date:
-      <input type="date" id="start_date" name="start_date">
-    </label>
-    <label for="end_date">End Date:
-      <input type="date" id="end_date" name="end_date">
-    </label>
-    <input type="submit" value='Request rental'>
-  </form>
-  <br>
-  <table style="width:50%" id='bookings_table'>
-    <tr>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Booking Status</th>
-    </tr>
-    <% if @bookings != nil %>
-      <% @bookings.each do |booking|%>
-        <tr>
-          <td><%=booking.start_date%></td>
-          <td><%=booking.end_date%></td>
-          <td><%=booking.status%></td>
-        </tr>
-      <%end%>
-    <%end%>
-  </table>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewing Property in <%= @property.postcode %></title> 
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
 
-   <footer>
-     🦍 © In the AirBnB Tonight 🦍 | 
-    <a href="https://github.com/MattDawson2020/in_the_airbnb_tonight">Project GitHub</a>
-  </footer>
-</body>
+  <body> 
+    <header>
+      <h1>&#127968; MakersBnB &#127968;</h1>
+    </header>
+    
+      <div>
+       <div> <!-- button navigation -->
+          <form action="/homepage" method='get'>
+            <input type="submit" value='Homepage'>
+          </form>
+          <form action="/property/new" method="get">
+              <button type="submit"> List a property </button>
+          </form>
+          <form action="/session/destroy" method='post'>
+              <button type="submit"> Logout </button>
+            </form>
+        </div>
+
+        <div>
+          <% flash.keys.each do |type| %>
+            <div data-alert class="flash <%= type %> alert-box radius">
+              <%= flash[type] %>
+              <a href="/property/<%= @property.id %>" class="close">&times;</a>
+            </div>
+          <% end %>        
+        </div>
+
+        <div> 
+          <h1 class="request_pt"> <%= @property.title%> </h1>
+            <p class="request_pd">
+              <%= @property.description%>
+            </p>
+            <br>
+            <p class="request_ppd">
+              £<%= @property.price_per_day%> per day
+            </p>
+          </div>
+          
+          <div class="rentform">
+            <form action="/property/<%= @property.id %>" method='post' class="rent_form">
+              <label for="start_date">Start Date:
+                <input type="date" id="start_date" name="start_date" class="start_rent">
+              </label>
+              <label for="end_date">End Date:
+                <input type="date" id="end_date" name="end_date" class="end_rent">
+              </label>
+              <input type="submit" value='Request rental' class="rent_button">
+            </form>
+         </div>
+
+        <br>
+        <div class="retable">
+          <table style="width:50%" id='bookings_table' class="request_table">
+            <tr>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Booking Status</th>
+            </tr>
+            <% if @bookings != nil %>
+              <% @bookings.each do |booking|%>
+                <tr>
+                  <td><%=booking.start_date%></td>
+                  <td><%=booking.end_date%></td>
+                  <td><%=booking.status%></td>
+                </tr>
+              <%end%>
+            <%end%>
+          </table>
+        </div>
+      </div>
+    <footer>
+      🦍 © In the AirBnB Tonight 🦍 | 
+      <a href="https://github.com/MattDawson2020/in_the_airbnb_tonight">Project GitHub</a>
+    </footer>
+  </body>
 </html>

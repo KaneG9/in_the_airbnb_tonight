@@ -16,7 +16,7 @@
       <div>
         <div> 
           <% flash.keys.each do |type| %>
-            <div data-alert class="homepage_welcome <%= type %> alert-box radius">
+            <div data-alert class="flash <%= type %> alert-box radius">
                 <%= flash[type] %>
                 <a href="/homepage" class="close">&times;</a>
             </div>
@@ -49,8 +49,6 @@
                 </p>
               <% end %>
         </div>
-
-        <hr>
       
         <div>
           <h2 class="property_listing_heading">&#128231; Messages &#128231;</h2>
