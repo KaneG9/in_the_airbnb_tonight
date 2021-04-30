@@ -150,7 +150,7 @@ rubocop
 
 ### Project Management
 
-<a href="https://trello.com/b/PyreuO8R/workflow">Link to trello board</a>
+<a href="https://trello.com/b/PyreuO8R/workflow">Trello board</a>
 <p>&nbsp;</p>
 
 ### Specification
@@ -301,3 +301,7 @@ I can continue to advertise my property as available until booking is confirmed
 * Kane Gin | [GitHub](https://github.com/KaneG9)
 * Tiffany Vallo | [GitHub](https://github.com/tiffanyvallo)
 * Finn Williamson | [GitHub](https://github.com/fwill22)
+
+<p>&nbsp;</p>
+
+### [| Original project repo |](https://github.com/makersacademy/course/tree/master/makersbnb)
