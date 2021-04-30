@@ -5,7 +5,7 @@ require_relative 'property'
 require_relative 'database_connection'
 
 class Message
-  attr_reader :id, :sender_id, :property_id, :receiver_id, :title, :booking_id
+  attr_reader :id, :sender_id, :property_id, :receiver_id, :title, :booking_id, :confirmed
 
   def initialize(input)
     @sender_id = input[:sender_id]
@@ -13,6 +13,7 @@ class Message
     @receiver_id = input[:receiver_id]
     @title = input[:title] || nil
     @id = input[:id]
+    @confirmed = input[:confirmed]
     @booking_id = input[:booking_id]
   end
 
@@ -36,6 +37,7 @@ class Message
                   property_id: message['property_id'],
                   receiver_id: message['receiver_id'],
                   id: message['id'],
+                  confirmed: message['confirmed'],
                   booking_id: message['booking_id'])
     end
   end
@@ -68,6 +70,7 @@ class Message
                   property_id: message['property_id'],
                   receiver_id: message['receiver_id'],
                   id: message['id'],
+                  confirmed: message['confirmed'],
                   booking_id: message['booking_id'])
     end
   end
