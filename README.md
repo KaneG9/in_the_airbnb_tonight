@@ -67,8 +67,28 @@ rubocop
 ```
 <p>&nbsp;</p>
 
-## User Flow
-[Screenshots]
+## User Interface Flow
+
+### Sign up
+
+### Sign in
+
+### Listings homepage 
+
+### List a new property
+
+### View a property
+
+### Request to rent a property
+
+### Property request message received
+
+### Property request approved 
+
+### Booking status updated
+
+
+
 
 <p>&nbsp;</p>
 
