@@ -2,7 +2,7 @@ MakersBnB
 =================
 Challenge:
  -------
-Builld a web application clone of AirBnB that allows users to list spaces they have available, and to hire spaces for the night.
+Build a web application clone of AirBnB that allows users to list spaces they have available, and to hire spaces for the night.
 
 By the end of the week, the goal is to be able to answer "yes" to the week's primary question:
 
