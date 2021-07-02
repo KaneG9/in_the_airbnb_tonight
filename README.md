@@ -2,7 +2,7 @@ MakersBnB
 =================
 Challenge:
  -------
-Builld a web application clone of AirBnB that allows users to list spaces they have available, and to hire spaces for the night.
+Build a web application clone of AirBnB that allows users to list spaces they have available, and to hire spaces for the night.
 
 By the end of the week, the goal is to be able to answer "yes" to the week's primary question:
 
@@ -67,7 +67,9 @@ rubocop
 ```
 <p>&nbsp;</p>
 
-## User Flow
+
+## User Interface Flow
+
 <details>
   <summary> Sign up </summary>
     <img src="/public/images/user_interface/sign_up.png">
@@ -148,7 +150,7 @@ rubocop
 
 ### Project Management
 
-<a href="https://trello.com/b/PyreuO8R/workflow">Link to trello board</a>
+<a href="https://trello.com/b/PyreuO8R/workflow">Trello board</a>
 <p>&nbsp;</p>
 
 ### Specification
@@ -299,3 +301,8 @@ I can continue to advertise my property as available until booking is confirmed
 * Kane Gin | [GitHub](https://github.com/KaneG9)
 * Tiffany Vallo | [GitHub](https://github.com/tiffanyvallo)
 * Finn Williamson | [GitHub](https://github.com/fwill22)
+
+<p>&nbsp;</p>
+
+### [| Original project repo |](https://github.com/makersacademy/course/tree/master/makersbnb)
+
