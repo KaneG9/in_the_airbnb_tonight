@@ -67,6 +67,7 @@ rubocop
 ```
 <p>&nbsp;</p>
 
+
 ## User Interface Flow
 
 <details>
@@ -146,7 +147,6 @@ rubocop
 <p>&nbsp;</p>
 
 ## Planning
-
 
 ### Project Management
 
@@ -305,3 +305,4 @@ I can continue to advertise my property as available until booking is confirmed
 <p>&nbsp;</p>
 
 ### [| Original project repo |](https://github.com/makersacademy/course/tree/master/makersbnb)
+
