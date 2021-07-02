@@ -68,12 +68,83 @@ rubocop
 <p>&nbsp;</p>
 
 ## User Flow
-[Screenshots]
+<details>
+  <summary> Sign up </summary>
+    <img src="/public/images/user_interface/sign_up.png">
+    <br>
+    Flash error if email used is not unique 
+    <br>
+    <img src="/public/images/user_interface/signup_error_flash.png">
+    <br>
+</details>
+
+<details>
+  <summary> Sign in </summary>
+    <img src="/public/images/user_interface/sign_in.png">
+    <br>
+    <img src="/public/images/user_interface/incorrect_login_flash.png">
+    <br>
+</details>
+
+<details>
+  <summary> Listings homepage </summary>
+    <img src="/public/images/user_interface/listings_homepage.png">
+    <br>
+</details>
+
+<details>
+  <summary> List a new property </summary>
+    <img src="/public/images/user_interface/list_property.png">
+    <br>
+</details>
+
+<details>
+  <summary> View a property </summary>
+    <img src="/public/images/user_interface/property_description_page.png">
+    <br>
+</details>
+
+<details>
+  <summary> Request to rent a property </summary>
+    <img src="/public/images/user_interface/make_booking.png">
+    <br>
+    Booking status set to pending review <br>
+    <img src="/public/images/user_interface/rental_request_sent.png">
+    <br>
+    Dates in past trigger error <br>
+    <img src="/public/images/user_interface/date_in_past_flash.png">
+    <br>
+</details>
+
+<details>
+  <summary> Property request message received </summary>
+    Property owner messages view <br>
+    <img src="/public/images/user_interface/rental_request_message.png">
+    <br>
+</details>
+
+<details>
+  <summary> Property request approved </summary>
+    Renter messages view <br>
+    <img src="/public/images/user_interface/request_approved_message.png">
+    <br>
+</details>
+
+<details>
+  <summary> Booking status updated </summary>
+    <img src="/public/images/user_interface/booking_status_updated.png">
+    <br>
+</details>
+
+<details>
+  <summary> Logout </summary>
+    <img src="/public/images/user_interface/logout.png">
+    <br>
+</details>
 
 <p>&nbsp;</p>
 
 ## Planning
-
 
 ### Project Management
 
